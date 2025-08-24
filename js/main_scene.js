@@ -28,8 +28,8 @@ export class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("tiles", "https://kingkrest.xyz/Portfolio/assets/tilesets/blode-32px.png");
-    this.load.tilemapTiledJSON("map", "https://kingkrest.xyz/Portfolio/assets/tilemaps/blode.json");
+    this.load.image("tiles", "Portfolio/assets/tilesets/blode-32px.png");
+    this.load.tilemapTiledJSON("map", "Portfolio/assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
     this.load.atlas("atlas", "https://kingkrest.xyz/Portfolio/assets/atlas/atlas.png", "https://kingkrest.xyz/Portfolio/assets/atlas/atlas.json");
