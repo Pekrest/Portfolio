@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #cb4646; /* Dark retro background */
+}
+div.static {
+  position:static;
+  border: 3px solid #73AD21
+}
+
+#game-container {
+  image-rendering: pixelated; /* Keeps pixel art crisp */
+}
