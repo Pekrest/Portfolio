@@ -52,7 +52,7 @@ export class MainScene extends Phaser.Scene {
     this.load.audio("ms_Music", "/Portfolio/assets/audio/ms_Music.mp3");
     this.load.audio("ms_Music", "/Portfolio/assets/audio/ms_Music.mp3");
     // Load rexVirtualJoystick plugin
-   /*this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);*/
+    this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);
     // Load joystick assets (optional, for visual joystick)
     this.load.image('joystickBase', '/Portfolio/assets/images/joystick_base.png');
     this.load.image('joystickThumb', '/Portfolio/assets/images/joystick_thumb.png');
