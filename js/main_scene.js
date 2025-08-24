@@ -35,27 +35,27 @@ export class MainScene extends Phaser.Scene {
     this.load.atlas("atlas", "/Portfolio/assets/atlas/atlas.png", "../assets/atlas/atlas.json");
     this.load.image("profile", "/Portfolio/images/profile.png"); // Load the profile image
     this.load.image("dialogueImage", "/Portfolio/assets/images/dialogueImage.png");
-    this.load.image("settingButtonDw", "../assets/images/buttons/settingsButton1.png");
-    this.load.image("settingButtonUp", "../assets/images/buttons/settingsButton2.png");
-    this.load.image("xButtonDw", "../assets/images/buttons/xButton1.png");
-    this.load.image("xButtonUp", "../assets/images/buttons/xButton2.png");
-    this.load.image("enterButtonId", "../assets/images/buttons/enterButton1.png");
-    this.load.image("enterButtonDw", "../assets/images/buttons/enterButton2.png");
-    this.load.image("enterButtonUp", "../assets/images/buttons/enterButton3.png");
-    this.load.image("volDwButtonDw", "../assets/images/buttons/volDwButton1.png");
-    this.load.image("volDwButtonUp", "../assets/images/buttons/volDwButton2.png");
-    this.load.image("volUpButtonDw", "../assets/images/buttons/volUpButton1.png");
-    this.load.image("volUpButtonUp", "../assets/images/buttons/volUpButton2.png");
-    this.load.image("minimapBorder", "../assets/images/minimapBorder.png");
-    this.load.image("settingsPanel", "../assets/images/settingsPanel.png");
-    this.load.image("profileImageBorder", "../assets/images/profileImageBorder.png");
-    this.load.audio("ms_Music", "assets/audio/ms_Music.mp3");
-    this.load.audio("ms_Music", "assets/audio/ms_Music.mp3");
+    this.load.image("settingButtonDw", "/Portfolio/assets/images/buttons/settingsButton1.png");
+    this.load.image("settingButtonUp", "/Portfolio/assets/images/buttons/settingsButton2.png");
+    this.load.image("xButtonDw", "/Portfolio/assets/images/buttons/xButton1.png");
+    this.load.image("xButtonUp", "/Portfolio/assets/images/buttons/xButton2.png");
+    this.load.image("enterButtonId", "/Portfolio/assets/images/buttons/enterButton1.png");
+    this.load.image("enterButtonDw", "/Portfolio/assets/images/buttons/enterButton2.png");
+    this.load.image("enterButtonUp", "/Portfolio/assets/images/buttons/enterButton3.png");
+    this.load.image("volDwButtonDw", "/Portfolio/assets/images/buttons/volDwButton1.png");
+    this.load.image("volDwButtonUp", "/Portfolio/assets/images/buttons/volDwButton2.png");
+    this.load.image("volUpButtonDw", "/Portfolio/assets/images/buttons/volUpButton1.png");
+    this.load.image("volUpButtonUp", "/Portfolio/assets/images/buttons/volUpButton2.png");
+    this.load.image("minimapBorder", "/Portfolio/assets/images/minimapBorder.png");
+    this.load.image("settingsPanel", "/Portfolio/assets/images/settingsPanel.png");
+    this.load.image("profileImageBorder", "/Portfolio/assets/images/profileImageBorder.png");
+    this.load.audio("ms_Music", "/Portfolio/assets/audio/ms_Music.mp3");
+    this.load.audio("ms_Music", "/Portfolio/assets/audio/ms_Music.mp3");
     // Load rexVirtualJoystick plugin
    /*this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);*/
     // Load joystick assets (optional, for visual joystick)
-    this.load.image('joystickBase', '../assets/images/joystick_base.png');
-    this.load.image('joystickThumb', '../assets/images/joystick_thumb.png');
+    this.load.image('joystickBase', '/Portfolio/assets/images/joystick_base.png');
+    this.load.image('joystickThumb', '/Portfolio/assets/images/joystick_thumb.png');
   }
 
   create(data = {}) {

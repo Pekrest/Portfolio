@@ -4,12 +4,12 @@ export class OrderScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("Sunflower", "assets/images/UGCs/Sunflower.png");
-    this.load.image("SAQUARIUM", "assets/images/UGCs/SAQUARIUM.png");
-    this.load.image("item1", "assets/item1.png");
-    this.load.image("item2", "assets/item2.png");
-    this.load.image("item3", "assets/item3.png");
-    this.load.image("pixelCoin", "assets/pixelCoin.png");
+    this.load.image("Sunflower", "/Portfolio/assets/images/UGCs/Sunflower.png");
+    this.load.image("SAQUARIUM", "/Portfolio/assets/images/UGCs/SAQUARIUM.png");
+    this.load.image("item1", "/Portfolio/assets/item1.png");
+    this.load.image("item2", "/Portfolio/assets/item2.png");
+    this.load.image("item3", "/Portfolio/assets/item3.png");
+    this.load.image("pixelCoin", "/Portfolio/assets/pixelCoin.png");
   }
 
   create(data) {
