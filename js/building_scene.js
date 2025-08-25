@@ -15,6 +15,7 @@ export class BuildingScene extends Phaser.Scene {
     this.volumeIncreaseButton = null;
     this.volumeDecreaseButton = null;
     this.isSettingsOpen = false; // Track settings panel state
+    this.joystickManager = null;
 
   }
 
@@ -23,6 +24,7 @@ export class BuildingScene extends Phaser.Scene {
     this.load.image("tiles", "../assets/tilesets/blode-32px.png");
     this.load.tilemapTiledJSON("buildingMap", "../assets/tilemaps/buildingsc.json");
     this.load.audio("bs_Music", "../assets/audio/house_music.mp3");
+    this.load.script('nipplejs', 'https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.2/nipplejs.min.js');
   }
 
   create(data) {
@@ -225,6 +227,31 @@ export class BuildingScene extends Phaser.Scene {
         });
       });*/
 
+      // Initialize virtual joystick for mobile devices using nippleJS
+    if (!this.sys.game.device.os.desktop) {
+      // Wait for nippleJS to be available (loaded in preload)
+      this.joystickManager = nipplejs.create({
+        zone: document.getElementById('game-container') || document.body, // Replace 'game-container' with your Phaser parent's div ID
+        mode: 'dynamic', // Allows joystick to appear where touched
+        position: { left: '100px', bottom: '100px' }, // Default position (adjust as needed)
+        color: 'white' // Basic styling (customize via CSS if desired)
+      });
+
+      // Handle joystick movement (set velocity directly)
+      this.joystickManager.on('move', (evt, data) => {
+        const force = Math.min(data.force, 1); // Clamp force for speed control
+        const angle = data.angle.radian;
+        const speed = 175 * force; // Match your movement speed
+        this.player.body.setVelocity(speed * Math.cos(angle), speed * Math.sin(angle) * -1); // Invert Y for Phaser coords
+      });
+
+      // Stop movement on release
+      this.joystickManager.on('end', () => {
+        this.player.body.setVelocity(0, 0);
+      });
+    }
+
+
     // Resume or start background music
     if (!this.bgMusic || !this.bgMusic.isPlaying) {
       this.bgMusic = this.sound.add("bs_Music", { volume: this.volume, loop: true });
@@ -357,6 +384,10 @@ export class BuildingScene extends Phaser.Scene {
     if (this.bgMusic && this.bgMusic.isPlaying) {
       this.bgMusic.stop();
     }
+    if (this.joystickManager) {
+    this.joystickManager.destroy();
+    this.joystickManager = null;
+    }
   }
 
   toggleSettings() {
@@ -379,7 +410,7 @@ export class BuildingScene extends Phaser.Scene {
 
 
   update(time, delta) {
-    const speed = 175;
+  const speed = 175;
     const prevVelocity = this.player.body.velocity.clone();
 
     this.animatedTiles.forEach(animTile => {
@@ -392,20 +423,75 @@ export class BuildingScene extends Phaser.Scene {
       }
     });
 
+    // Reset velocity only for keyboard (joystick handles touch via events)
+    if (this.sys.game.device.os.desktop) {
+      this.player.body.setVelocity(0);
+    }
 
-    this.player.body.setVelocity(0);
+    // Handle keyboard movement with cursor keys and W/A/S/D
+    const leftDown = this.cursors.left.isDown || this.keys.A.isDown;
+    const rightDown = this.cursors.right.isDown || this.keys.D.isDown;
+    const upDown = this.cursors.up.isDown || this.keys.W.isDown;
+    const downDown = this.cursors.down.isDown || this.keys.S.isDown;
 
-    // Handle movement with both cursor keys and W,A,S,D
-    if (this.cursors.left.isDown || this.keys.A.isDown) {
+    if (leftDown) {
       this.player.body.setVelocityX(-speed);
-    } else if (this.cursors.right.isDown || this.keys.D.isDown) {
+    } else if (rightDown) {
       this.player.body.setVelocityX(speed);
     }
 
-    if (this.cursors.up.isDown || this.keys.W.isDown) {
+    if (upDown) {
       this.player.body.setVelocityY(-speed);
-    } else if (this.cursors.down.isDown || this.keys.S.isDown) {
+    } else if (downDown) {
       this.player.body.setVelocityY(speed);
+    }
+
+    // Handle keyboard animations
+    if (this.sys.game.device.os.desktop) {
+      if (leftDown) {
+        this.player.anims.play("misa-left-walk", true);
+      } else if (rightDown) {
+        this.player.anims.play("misa-right-walk", true);
+      } else if (upDown) {
+        this.player.anims.play("misa-back-walk", true);
+      } else if (downDown) {
+        this.player.anims.play("misa-front-walk", true);
+      } else {
+        this.player.anims.stop();
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+      }
+    } else {
+      // Joystick animations (unchanged)
+      const vx = this.player.body.velocity.x;
+      const vy = this.player.body.velocity.y;
+      if (Math.abs(vx) > Math.abs(vy)) {
+        if (vx < 0 && this.player.anims.currentAnim?.key !== "misa-left-walk") {
+          this.player.anims.play("misa-left-walk", true);
+        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "misa-right-walk") {
+          this.player.anims.play("misa-right-walk", true);
+        } else if (vx === 0 && vy === 0) {
+          this.player.anims.stop();
+          if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
+          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
+          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
+          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        }
+      } else if (Math.abs(vy) > 0) {
+        if (vy < 0 && this.player.anims.currentAnim?.key !== "misa-back-walk") {
+          this.player.anims.play("misa-back-walk", true);
+        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "misa-front-walk") {
+          this.player.anims.play("misa-front-walk", true);
+        }
+      } else if (vx === 0 && vy === 0) {
+        this.player.anims.stop();
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+      }
     }
 
     // Handle health decrease (for testing)
@@ -414,22 +500,9 @@ export class BuildingScene extends Phaser.Scene {
       this.lifeBar.setSize(100 * (this.health / 100), 20);
     }
 
-    this.player.body.velocity.normalize().scale(speed);
-
-    if (this.cursors.left.isDown || this.keys.A.isDown) {
-      this.player.anims.play("misa-left-walk", true);
-    } else if (this.cursors.right.isDown || this.keys.D.isDown) {
-      this.player.anims.play("misa-right-walk", true);
-    } else if (this.cursors.up.isDown || this.keys.W.isDown) {
-      this.player.anims.play("misa-back-walk", true);
-    } else if (this.cursors.down.isDown || this.keys.S.isDown) {
-      this.player.anims.play("misa-front-walk", true);
-    } else {
-      this.player.anims.stop();
-      if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-      else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-      else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-      else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+    // Normalize velocity to prevent diagonal speed boost (only for keyboard)
+    if (this.sys.game.device.os.desktop) {
+      this.player.body.velocity.normalize().scale(speed);
     }
   }
 }

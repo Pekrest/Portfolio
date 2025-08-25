@@ -23,12 +23,11 @@ export class MainScene extends Phaser.Scene {
     this.volumeIncreaseButton = null;
     this.volumeDecreaseButton = null;
     this.isSettingsOpen = false; // Track settings panel state
-    this.joystick = null; // Virtual joystick reference
-    
+    this.joystickManager = null;
   }
 
   preload() {
-   this.load.image("tiles", "../assets/tilesets/blode-32px.png");
+    this.load.image("tiles", "../assets/tilesets/blode-32px.png");
     this.load.tilemapTiledJSON("map", "../assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
@@ -49,16 +48,12 @@ export class MainScene extends Phaser.Scene {
     this.load.image("minimapBorder", "../assets/images/minimapBorder.png");
     this.load.image("settingsPanel", "../assets/images/settingsPanel.png");
     this.load.image("profileImageBorder", "../assets/images/profileImageBorder.png");
-    this.load.audio("ms_Music", "assets/audio/ms_Music.mp3");
-    this.load.audio("ms_Music", "assets/audio/ms_Music.mp3");
-    // Load rexVirtualJoystick plugin
-   /*this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);*/
-    // Load joystick assets (optional, for visual joystick)
-    this.load.image('joystickBase', '../assets/images/joystick_base.png');
-    this.load.image('joystickThumb', '../assets/images/joystick_thumb.png');
+    this.load.audio("ms_Music", "assets/audio/ms_Music.mp3"); // Removed duplicate load
+    this.load.script('nipplejs', 'https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.2/nipplejs.min.js');
   }
+
   create(data = {}) {
-     // Set health from data if provided
+    // Set health from data if provided
     this.health = data.health !== undefined ? data.health : 100;
 
     const map = this.make.tilemap({ key: "map" });
@@ -132,7 +127,7 @@ export class MainScene extends Phaser.Scene {
     console.log("Physics world bounds set to:", map.widthInPixels, "x", map.heightInPixels);
   
 
-    this.physics.add.collider(this.player,([ worldLayer, worldLayer2]));
+    this.physics.add.collider(this.player, [worldLayer, worldLayer2]); // Fixed array syntax
 
     // Handle all doors in the "Home" layer dynamically
     const doors = map.filterObjects("entranceDoors", (obj) => obj.type === "Door");
@@ -248,7 +243,7 @@ export class MainScene extends Phaser.Scene {
         repeat: -1,
         ease: 'Sine.easeInOut'
     });
-        this.tweens.add({
+    this.tweens.add({
         targets: sredCircle,
         scale: { from: 1, to: 2.5 },
         alpha: { from: 0.5, to: 0.25 },
@@ -437,18 +432,28 @@ export class MainScene extends Phaser.Scene {
       });
     }
 
-    // Initialize virtual joystick for mobile devices
+        // Initialize virtual joystick for mobile devices using nippleJS
     if (!this.sys.game.device.os.desktop) {
-      this.joystick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
-        x: 100,
-        y: this.scale.height - 100,
-        radius: 50,
-        base: this.add.image(0, 0, 'joystickBase').setDepth(35).setScrollFactor(0),
-        thumb: this.add.image(0, 0, 'joystickThumb').setDepth(36).setScrollFactor(0),
-        dir: '8dir', // Allow 8-directional movement
-        forceMin: 10, // Minimum force required to register movement
+      // Wait for nippleJS to be available (loaded in preload)
+      this.joystickManager = nipplejs.create({
+        zone: document.getElementById('game-container') || document.body, // Replace 'game-container' with your Phaser parent's div ID
+        mode: 'dynamic', // Allows joystick to appear where touched
+        position: { left: '100px', bottom: '100px' }, // Default position (adjust as needed)
+        color: 'white' // Basic styling (customize via CSS if desired)
       });
-      this.minimap.ignore([this.joystick.base, this.joystick.thumb]);
+
+      // Handle joystick movement (set velocity directly)
+      this.joystickManager.on('move', (evt, data) => {
+        const force = Math.min(data.force, 1); // Clamp force for speed control
+        const angle = data.angle.radian;
+        const speed = 175 * force; // Match your movement speed
+        this.player.body.setVelocity(speed * Math.cos(angle), speed * Math.sin(angle) * -1); // Invert Y for Phaser coords
+      });
+
+      // Stop movement on release
+      this.joystickManager.on('end', () => {
+        this.player.body.setVelocity(0, 0);
+      });
     }
 
     // Resume or start background music
@@ -585,6 +590,10 @@ export class MainScene extends Phaser.Scene {
     if (this.bgMusic && this.bgMusic.isPlaying) {
       this.bgMusic.stop();
     }
+    if (this.joystickManager) {
+    this.joystickManager.destroy();
+    this.joystickManager = null;
+    }
   }
    closeDialogue() {
     if (this.dialogueGroup) {
@@ -615,7 +624,7 @@ export class MainScene extends Phaser.Scene {
   }
 
   update(time, delta) {
-    this.playerIcon.setPosition(this.player.x, this.player.y);
+  this.playerIcon.setPosition(this.player.x, this.player.y);
     const speed = 175;
     const prevVelocity = this.player.body.velocity.clone();
 
@@ -629,19 +638,75 @@ export class MainScene extends Phaser.Scene {
       }
     });
 
-   this.player.body.setVelocity(0);
+    // Reset velocity only for keyboard (joystick handles touch via events)
+    if (this.sys.game.device.os.desktop) {
+      this.player.body.setVelocity(0);
+    }
 
-    // Handle movement with both cursor keys and W,A,S,D
-    if (this.cursors.left.isDown || this.keys.A.isDown) {
+    // Handle keyboard movement with cursor keys and W/A/S/D
+    const leftDown = this.cursors.left.isDown || this.keys.A.isDown;
+    const rightDown = this.cursors.right.isDown || this.keys.D.isDown;
+    const upDown = this.cursors.up.isDown || this.keys.W.isDown;
+    const downDown = this.cursors.down.isDown || this.keys.S.isDown;
+
+    if (leftDown) {
       this.player.body.setVelocityX(-speed);
-    } else if (this.cursors.right.isDown || this.keys.D.isDown) {
+    } else if (rightDown) {
       this.player.body.setVelocityX(speed);
     }
 
-    if (this.cursors.up.isDown || this.keys.W.isDown) {
+    if (upDown) {
       this.player.body.setVelocityY(-speed);
-    } else if (this.cursors.down.isDown || this.keys.S.isDown) {
+    } else if (downDown) {
       this.player.body.setVelocityY(speed);
+    }
+
+    // Handle keyboard animations
+    if (this.sys.game.device.os.desktop) {
+      if (leftDown) {
+        this.player.anims.play("misa-left-walk", true);
+      } else if (rightDown) {
+        this.player.anims.play("misa-right-walk", true);
+      } else if (upDown) {
+        this.player.anims.play("misa-back-walk", true);
+      } else if (downDown) {
+        this.player.anims.play("misa-front-walk", true);
+      } else {
+        this.player.anims.stop();
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+      }
+    } else {
+      // Joystick animations (unchanged)
+      const vx = this.player.body.velocity.x;
+      const vy = this.player.body.velocity.y;
+      if (Math.abs(vx) > Math.abs(vy)) {
+        if (vx < 0 && this.player.anims.currentAnim?.key !== "misa-left-walk") {
+          this.player.anims.play("misa-left-walk", true);
+        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "misa-right-walk") {
+          this.player.anims.play("misa-right-walk", true);
+        } else if (vx === 0 && vy === 0) {
+          this.player.anims.stop();
+          if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
+          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
+          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
+          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        }
+      } else if (Math.abs(vy) > 0) {
+        if (vy < 0 && this.player.anims.currentAnim?.key !== "misa-back-walk") {
+          this.player.anims.play("misa-back-walk", true);
+        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "misa-front-walk") {
+          this.player.anims.play("misa-front-walk", true);
+        }
+      } else if (vx === 0 && vy === 0) {
+        this.player.anims.stop();
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+      }
     }
 
     // Handle health decrease (for testing)
@@ -650,22 +715,9 @@ export class MainScene extends Phaser.Scene {
       this.lifeBar.setSize(100 * (this.health / 100), 20);
     }
 
-    this.player.body.velocity.normalize().scale(speed);
-
-    if (this.cursors.left.isDown || this.keys.A.isDown) {
-      this.player.anims.play("misa-left-walk", true);
-    } else if (this.cursors.right.isDown || this.keys.D.isDown) {
-      this.player.anims.play("misa-right-walk", true);
-    } else if (this.cursors.up.isDown || this.keys.W.isDown) {
-      this.player.anims.play("misa-back-walk", true);
-    } else if (this.cursors.down.isDown || this.keys.S.isDown) {
-      this.player.anims.play("misa-front-walk", true);
-    } else {
-      this.player.anims.stop();
-      if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-      else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-      else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-      else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+    // Normalize velocity to prevent diagonal speed boost (only for keyboard)
+    if (this.sys.game.device.os.desktop) {
+      this.player.body.velocity.normalize().scale(speed);
     }
   }
 }
