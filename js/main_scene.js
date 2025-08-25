@@ -52,7 +52,7 @@ export class MainScene extends Phaser.Scene {
     this.load.audio("ms_Music", "assets/audio/ms_Music.mp3");
     this.load.audio("ms_Music", "assets/audio/ms_Music.mp3");
     // Load rexVirtualJoystick plugin
-   this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);
+   /*this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);*/
     // Load joystick assets (optional, for visual joystick)
     this.load.image('joystickBase', '../assets/images/joystick_base.png');
     this.load.image('joystickThumb', '../assets/images/joystick_thumb.png');
@@ -629,44 +629,20 @@ export class MainScene extends Phaser.Scene {
       }
     });
 
-    this.player.body.setVelocity(0);
+   this.player.body.setVelocity(0);
 
-    if (this.cursors.space.isDown) {
-      this.cameras.main.zoom += 0.01;
-    } else if (this.cursors.shift.isDown) {
-      this.cameras.main.zoom -= 0.01;
-    }
-    this.cameras.main.zoom = Phaser.Math.Clamp(this.cameras.main.zoom, 1, 3);
-
-    // Handle movement with both cursor keys, W,A,S,D, and joystick
-    let velocityX = 0;
-    let velocityY = 0;
-
-    // Keyboard controls
+    // Handle movement with both cursor keys and W,A,S,D
     if (this.cursors.left.isDown || this.keys.A.isDown) {
-      velocityX = -speed;
+      this.player.body.setVelocityX(-speed);
     } else if (this.cursors.right.isDown || this.keys.D.isDown) {
-      velocityX = speed;
+      this.player.body.setVelocityX(speed);
     }
 
     if (this.cursors.up.isDown || this.keys.W.isDown) {
-      velocityY = -speed;
+      this.player.body.setVelocityY(-speed);
     } else if (this.cursors.down.isDown || this.keys.S.isDown) {
-      velocityY = speed;
+      this.player.body.setVelocityY(speed);
     }
-
-    // Joystick controls (only on mobile)
-    if (this.joystick && !this.sys.game.device.os.desktop) {
-      const force = this.joystick.force;
-      const angle = this.joystick.angle;
-      if (force > this.joystick.forceMin) {
-        velocityX = speed * Math.cos(angle * Math.PI / 180);
-        velocityY = speed * Math.sin(angle * Math.PI / 180);
-      }
-    }
-
-    this.player.body.setVelocity(velocityX, velocityY);
-    this.player.body.velocity.normalize().scale(speed);
 
     // Handle health decrease (for testing)
     if (Phaser.Input.Keyboard.JustDown(this.keys.L)) {
@@ -674,14 +650,15 @@ export class MainScene extends Phaser.Scene {
       this.lifeBar.setSize(100 * (this.health / 100), 20);
     }
 
-    // Update animations based on movement
-    if (velocityX < 0) {
+    this.player.body.velocity.normalize().scale(speed);
+
+    if (this.cursors.left.isDown || this.keys.A.isDown) {
       this.player.anims.play("misa-left-walk", true);
-    } else if (velocityX > 0) {
+    } else if (this.cursors.right.isDown || this.keys.D.isDown) {
       this.player.anims.play("misa-right-walk", true);
-    } else if (velocityY < 0) {
+    } else if (this.cursors.up.isDown || this.keys.W.isDown) {
       this.player.anims.play("misa-back-walk", true);
-    } else if (velocityY > 0) {
+    } else if (this.cursors.down.isDown || this.keys.S.isDown) {
       this.player.anims.play("misa-front-walk", true);
     } else {
       this.player.anims.stop();
