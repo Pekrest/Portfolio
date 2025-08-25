@@ -141,6 +141,7 @@ export class OrderScene extends Phaser.Scene {
       </div>
     `;
 
+    
     // Style the overlay
     const style = document.createElement('style');
     style.textContent = `
@@ -158,82 +159,82 @@ export class OrderScene extends Phaser.Scene {
       }
       .order-container {
         background: #6626ff;
-        padding: 20px;
+        padding: 2%;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
-        width: 1024px;
-        height: 1152px;
+        width: min(80%, ${gameWidth}px);
+        height: min(80%, ${gameHeight}px);
         overflow: hidden;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
       }
       .header {
         display: flex;
         justify-content: center;
         align-items: center;
         background: #222044;
-        padding-bottom: 10px;
+        padding-bottom: 1%;
         border-bottom: 1px solid #ddd;
-        margin-bottom: 10px;
+        margin-bottom: 1%;
       }
       .header h1 {
-        font-size: 40px;
+        font-size: clamp(16px, 4vw, 24px);
         color: #ffffffff;
       }
       .sidebar {
         flex: 1;
-        padding: 10px;
+        padding: 1%;
         background: #28237dff;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 1%;
         overflow-y: auto;
       }
-     .item {
-        flex: 1 1 calc(33.33% - 6.67px);
+      .item {
+        flex: 1 1 calc(33.33% - 0.67%);
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 5px;
-        background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-        border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+        padding: 1%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 5px;
-        min-width: 100px;
-        min-height: 250px;
+        min-width: 80px;
+        min-height: 200px;
         box-sizing: border-box;
-        backdrop-filter: blur(10px); /* Blur effect for glassmorphism */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
       .item-image {
-        margin-top: 15px;
+        margin-top: 1.5%;
         width: 80%;
-        height: 200px; /* Fixed height for consistency */
-        object-fit: contain; /* Maintain aspect ratio without stretching */
+        height: 150px;
+        object-fit: contain;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 5px;
       }
       .item-name {
-        margin: 5px 0;
+        margin: 0.5% 0;
         font-weight: bold;
-        font-size: 30px;
+        font-size: clamp(14px, 3vw, 18px);
         color: #ffffff;
       }
       .price-container {
         display: flex;
         align-items: center;
-        gap: 5px; 
-        margin: 5px 0;
+        gap: 5px;
+        margin: 0.5% 0;
       }
       .price {
-        margin: 5px 0;
         font-weight: bold;
         color: #dbfa15ff;
-        font-size: 25px;
+        font-size: clamp(12px, 2.5vw, 16px);
       }
       .price-icon {
-        width: 32px; 
-        height: 32px;
+        width: 24px;
+        height: 24px;
         vertical-align: middle;
       }
       .item button {
@@ -243,9 +244,9 @@ export class OrderScene extends Phaser.Scene {
         border: none;
         border-radius: 3px;
         cursor: pointer;
-        font-size: 25px;
-        margin-top: 5px;
-        margin-bottom: 15px;
+        font-size: clamp(12px, 2.5vw, 16px);
+        margin-top: 0.5%;
+        margin-bottom: 1.5%;
         width: 80%;
       }
       .item button:hover {
@@ -259,12 +260,20 @@ export class OrderScene extends Phaser.Scene {
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-size: clamp(12px, 2.5vw, 16px);
       }
       .close-btn:hover {
         background: #c82333;
       }
+      @media (max-width: 600px) {
+        .item {
+          flex: 1 1 calc(50% - 0.5%);
+          min-width: 120px;
+        }
+      }
     `;
     document.head.appendChild(style);
+
 
     // Add event listeners
     overlay.querySelector('.order-container').addEventListener('click', (e) => {
