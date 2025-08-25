@@ -28,34 +28,34 @@ export class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("tiles", "Portfolio/assets/tilesets/blode-32px.png");
-    this.load.tilemapTiledJSON("map", "Portfolio/assets/tilemaps/blode.json");
+    this.load.image("tiles", "../assets/tilesets/blode-32px.png");
+    this.load.tilemapTiledJSON("map", "../assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
-    this.load.atlas("atlas", "https://kingkrest.xyz/Portfolio/assets/atlas/atlas.png", "https://kingkrest.xyz/Portfolio/assets/atlas/atlas.json");
-    this.load.image("profile", "https://kingkrest.xyz/Portfolio/assets/images/profile.png"); // Load the profile image
-    this.load.image("dialogueImage", "https://kingkrest.xyz/Portfolio/assets/images/dialogueImage.png");
-    this.load.image("settingButtonDw", "https://kingkrest.xyz/Portfolio/assets/images/buttons/settingsButton1.png");
+    this.load.atlas("atlas", "../assets/atlas/atlas.png", "../assets/atlas/atlas.json");
+    this.load.image("profile", "../assets/images/profile.png"); // Load the profile image
+    this.load.image("dialogueImage", "../assets/images/dialogueImage.png");
+    this.load.image("settingButtonDw", "../assets/images/buttons/settingsButton1.png");
     this.load.image("settingButtonUp", "https://kingkrest.xyz/Portfolio/assets/images/buttons/settingsButton2.png");
     this.load.image("xButtonDw", "https://kingkrest.xyz/Portfolio/assets/images/buttons/xButton1.png");
     this.load.image("xButtonUp", "https://kingkrest.xyz/Portfolio/assets/images/buttons/xButton2.png");
     this.load.image("enterButtonId", "https://kingkrest.xyz/Portfolio/assets/images/buttons/enterButton1.png");
     this.load.image("enterButtonDw", "https://kingkrest.xyz/Portfolio/assets/images/buttons/enterButton2.png");
     this.load.image("enterButtonUp", "https://kingkrest.xyz/Portfolio/assets/images/buttons/enterButton3.png");
-    this.load.image("volDwButtonDw", "https://kingkrest.xyz/Portfolio/assets/images/buttons/volDwButton1.png");
-    this.load.image("volDwButtonUp", "https://kingkrest.xyz/Portfolio/assets/images/buttons/volDwButton2.png");
-    this.load.image("volUpButtonDw", "https://kingkrest.xyz/Portfolio/assets/images/buttons/volUpButton1.png");
-    this.load.image("volUpButtonUp", "https://kingkrest.xyz/Portfolio/assets/images/buttons/volUpButton2.png");
-    this.load.image("minimapBorder", "https://kingkrest.xyz/Portfolio/assets/images/minimapBorder.png");
-    this.load.image("settingsPanel", "https://kingkrest.xyz/Portfolio/assets/images/settingsPanel.png");
-    this.load.image("profileImageBorder", "https://kingkrest.xyz/Portfolio/assets/images/profileImageBorder.png");
-    this.load.audio("ms_Music", "https://kingkrest.xyz/Portfolio/assets/audio/ms_Music.mp3");
-    this.load.audio("ms_Music", "https://kingkrest.xyz/Portfolio/assets/audio/ms_Music.mp3");
+    this.load.image("volDwButtonDw", "/assets/images/buttons/volDwButton1.png");
+    this.load.image("volDwButtonUp", "assets/images/buttons/volDwButton2.png");
+    this.load.image("volUpButtonDw", "assets/images/buttons/volUpButton1.png");
+    this.load.image("volUpButtonUp", "assets/images/buttons/volUpButton2.png");
+    this.load.image("minimapBorder", "/Portfolio/assets/images/minimapBorder.png");
+    this.load.image("settingsPanel", "Portfolio/assets/images/settingsPanel.png");
+    this.load.image("profileImageBorder", "Portfolio/assets/images/profileImageBorder.png");
+    this.load.audio("ms_Music", "Portfolio/assets/audio/ms_Music.mp3");
+    this.load.audio("ms_Music", "Portfolio/assets/audio/ms_Music.mp3");
     // Load rexVirtualJoystick plugin
    /*this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);*/
     // Load joystick assets (optional, for visual joystick)
-    this.load.image('joystickBase', 'https://kingkrest.xyz/Portfolio/assets/images/joystick_base.png');
-    this.load.image('joystickThumb', 'https://kingkrest.xyz/Portfolio/assets/images/joystick_thumb.png');
+    this.load.image('joystickBase', 'Portfolio/assets/images/joystick_base.png');
+    this.load.image('joystickThumb', 'Portfolio/assets/images/joystick_thumb.png');
   }
 
   create(data = {}) {
