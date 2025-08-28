@@ -38,6 +38,7 @@ export class BuildingScene extends Phaser.Scene {
     const belowLayer = map.createLayer("Below Player", [tileset, UGCtileset], 0, 0);
     const belowLayer2 = map.createLayer("Below Player2", [tileset, UGCtileset], 0, 0);
     const worldLayer = map.createLayer("World", [tileset, UGCtileset], 0, 0);
+    const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset], 0, 0);
     const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset], 0, 0);
 
     // Initialize animations for all tilesets
@@ -69,6 +70,8 @@ export class BuildingScene extends Phaser.Scene {
    
 
     worldLayer.setCollisionByProperty({ collides: true });
+    worldLayer2.setCollisionByProperty({ collides: true });
+
     aboveLayer.setDepth(10);
 
     const spawnPoint = map.findObject("Objectsc", (obj) => obj.name === "Home Spawn") || { x: data.playerX, y: data.playerY };
@@ -84,7 +87,7 @@ export class BuildingScene extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
     console.log("Physics world bounds set to:", map.widthInPixels, "x", map.heightInPixels);
   
-      this.physics.add.collider(this.player, worldLayer);
+      this.physics.add.collider(this.player, [worldLayer, worldLayer2]);
   
       const door = map.findObject("Objectsc", (obj) => obj.name === "Home Exit");
       if (door) {
