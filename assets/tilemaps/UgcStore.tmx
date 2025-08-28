@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="25" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="9">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="25" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="9">
  <editorsettings>
   <export target="UgcStore.json" format="json"/>
  </editorsettings>
@@ -10025,6 +10025,569 @@
    </properties>
   </tile>
  </tileset>
+ <tileset firstgid="1981" name="UGCs" tilewidth="32" tileheight="32" tilecount="2112" columns="33">
+  <image source="../tilesets/UGCs-32px.png" width="1084" height="2048"/>
+  <tile id="825">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="826">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="827">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="828">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="829">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="830">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="858">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="859">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="860">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="861">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="862">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="863">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="891">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="892">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="893">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="894">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="895">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="896">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="924">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="925">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="926">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="927">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="928">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="929">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="1089">
+   <animation>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="4" duration="100"/>
+    <frame tileid="7" duration="100"/>
+    <frame tileid="10" duration="100"/>
+    <frame tileid="13" duration="100"/>
+    <frame tileid="16" duration="100"/>
+    <frame tileid="19" duration="100"/>
+    <frame tileid="22" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1090">
+   <animation>
+    <frame tileid="2" duration="100"/>
+    <frame tileid="5" duration="100"/>
+    <frame tileid="8" duration="100"/>
+    <frame tileid="11" duration="100"/>
+    <frame tileid="14" duration="100"/>
+    <frame tileid="17" duration="100"/>
+    <frame tileid="20" duration="100"/>
+    <frame tileid="23" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1091">
+   <animation>
+    <frame tileid="3" duration="100"/>
+    <frame tileid="6" duration="100"/>
+    <frame tileid="9" duration="100"/>
+    <frame tileid="12" duration="100"/>
+    <frame tileid="15" duration="100"/>
+    <frame tileid="18" duration="100"/>
+    <frame tileid="21" duration="100"/>
+    <frame tileid="24" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1094">
+   <animation>
+    <frame tileid="99" duration="100"/>
+    <frame tileid="102" duration="100"/>
+    <frame tileid="105" duration="100"/>
+    <frame tileid="108" duration="100"/>
+    <frame tileid="111" duration="100"/>
+    <frame tileid="114" duration="100"/>
+    <frame tileid="117" duration="100"/>
+    <frame tileid="120" duration="100"/>
+    <frame tileid="123" duration="100"/>
+    <frame tileid="126" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1095">
+   <animation>
+    <frame tileid="100" duration="100"/>
+    <frame tileid="103" duration="100"/>
+    <frame tileid="106" duration="100"/>
+    <frame tileid="109" duration="100"/>
+    <frame tileid="112" duration="100"/>
+    <frame tileid="115" duration="100"/>
+    <frame tileid="118" duration="100"/>
+    <frame tileid="121" duration="100"/>
+    <frame tileid="124" duration="100"/>
+    <frame tileid="127" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1122">
+   <animation>
+    <frame tileid="528" duration="100"/>
+    <frame tileid="531" duration="100"/>
+    <frame tileid="534" duration="100"/>
+    <frame tileid="537" duration="100"/>
+    <frame tileid="540" duration="100"/>
+    <frame tileid="543" duration="100"/>
+    <frame tileid="546" duration="100"/>
+    <frame tileid="549" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1123">
+   <animation>
+    <frame tileid="529" duration="100"/>
+    <frame tileid="532" duration="100"/>
+    <frame tileid="535" duration="100"/>
+    <frame tileid="538" duration="100"/>
+    <frame tileid="541" duration="100"/>
+    <frame tileid="544" duration="100"/>
+    <frame tileid="547" duration="100"/>
+    <frame tileid="550" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1125">
+   <animation>
+    <frame tileid="66" duration="100"/>
+    <frame tileid="68" duration="100"/>
+    <frame tileid="70" duration="100"/>
+    <frame tileid="72" duration="100"/>
+    <frame tileid="74" duration="100"/>
+    <frame tileid="76" duration="100"/>
+    <frame tileid="78" duration="100"/>
+    <frame tileid="80" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1126">
+   <animation>
+    <frame tileid="67" duration="100"/>
+    <frame tileid="69" duration="100"/>
+    <frame tileid="71" duration="100"/>
+    <frame tileid="73" duration="100"/>
+    <frame tileid="75" duration="100"/>
+    <frame tileid="77" duration="100"/>
+    <frame tileid="79" duration="100"/>
+    <frame tileid="81" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1127">
+   <animation>
+    <frame tileid="132" duration="100"/>
+    <frame tileid="135" duration="100"/>
+    <frame tileid="138" duration="100"/>
+    <frame tileid="141" duration="100"/>
+    <frame tileid="144" duration="100"/>
+    <frame tileid="147" duration="100"/>
+    <frame tileid="150" duration="100"/>
+    <frame tileid="153" duration="100"/>
+    <frame tileid="156" duration="100"/>
+    <frame tileid="159" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1128">
+   <animation>
+    <frame tileid="133" duration="100"/>
+    <frame tileid="136" duration="100"/>
+    <frame tileid="139" duration="100"/>
+    <frame tileid="142" duration="100"/>
+    <frame tileid="145" duration="100"/>
+    <frame tileid="148" duration="100"/>
+    <frame tileid="151" duration="100"/>
+    <frame tileid="154" duration="100"/>
+    <frame tileid="157" duration="100"/>
+    <frame tileid="160" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1158">
+   <animation>
+    <frame tileid="726" duration="100"/>
+    <frame tileid="727" duration="100"/>
+    <frame tileid="728" duration="100"/>
+    <frame tileid="729" duration="100"/>
+    <frame tileid="730" duration="100"/>
+    <frame tileid="731" duration="100"/>
+    <frame tileid="732" duration="100"/>
+    <frame tileid="733" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1159">
+   <animation>
+    <frame tileid="735" duration="100"/>
+    <frame tileid="736" duration="100"/>
+    <frame tileid="737" duration="100"/>
+    <frame tileid="738" duration="100"/>
+    <frame tileid="739" duration="100"/>
+    <frame tileid="740" duration="100"/>
+    <frame tileid="741" duration="100"/>
+    <frame tileid="742" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1162">
+   <animation>
+    <frame tileid="330" duration="100"/>
+    <frame tileid="334" duration="100"/>
+    <frame tileid="338" duration="100"/>
+    <frame tileid="342" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1163">
+   <animation>
+    <frame tileid="331" duration="100"/>
+    <frame tileid="335" duration="100"/>
+    <frame tileid="339" duration="100"/>
+    <frame tileid="343" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1164">
+   <animation>
+    <frame tileid="332" duration="100"/>
+    <frame tileid="336" duration="100"/>
+    <frame tileid="340" duration="100"/>
+    <frame tileid="344" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1166">
+   <animation>
+    <frame tileid="346" duration="100"/>
+    <frame tileid="350" duration="100"/>
+    <frame tileid="354" duration="100"/>
+    <frame tileid="358" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1167">
+   <animation>
+    <frame tileid="347" duration="100"/>
+    <frame tileid="351" duration="100"/>
+    <frame tileid="355" duration="100"/>
+    <frame tileid="359" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1168">
+   <animation>
+    <frame tileid="348" duration="100"/>
+    <frame tileid="352" duration="100"/>
+    <frame tileid="356" duration="100"/>
+    <frame tileid="360" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1188">
+   <animation>
+    <frame tileid="594" duration="100"/>
+    <frame tileid="597" duration="100"/>
+    <frame tileid="600" duration="100"/>
+    <frame tileid="603" duration="100"/>
+    <frame tileid="606" duration="100"/>
+    <frame tileid="609" duration="100"/>
+    <frame tileid="612" duration="100"/>
+    <frame tileid="615" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1189">
+   <animation>
+    <frame tileid="595" duration="100"/>
+    <frame tileid="598" duration="100"/>
+    <frame tileid="601" duration="100"/>
+    <frame tileid="604" duration="100"/>
+    <frame tileid="607" duration="100"/>
+    <frame tileid="610" duration="100"/>
+    <frame tileid="613" duration="100"/>
+    <frame tileid="616" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1191">
+   <animation>
+    <frame tileid="759" duration="100"/>
+    <frame tileid="761" duration="100"/>
+    <frame tileid="763" duration="100"/>
+    <frame tileid="765" duration="100"/>
+    <frame tileid="767" duration="100"/>
+    <frame tileid="769" duration="100"/>
+    <frame tileid="771" duration="100"/>
+    <frame tileid="773" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1192">
+   <animation>
+    <frame tileid="760" duration="100"/>
+    <frame tileid="762" duration="100"/>
+    <frame tileid="764" duration="100"/>
+    <frame tileid="766" duration="100"/>
+    <frame tileid="768" duration="100"/>
+    <frame tileid="770" duration="100"/>
+    <frame tileid="772" duration="100"/>
+    <frame tileid="774" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1224">
+   <animation>
+    <frame tileid="792" duration="100"/>
+    <frame tileid="794" duration="100"/>
+    <frame tileid="796" duration="100"/>
+    <frame tileid="798" duration="100"/>
+    <frame tileid="800" duration="100"/>
+    <frame tileid="802" duration="100"/>
+    <frame tileid="804" duration="100"/>
+    <frame tileid="806" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1225">
+   <animation>
+    <frame tileid="793" duration="100"/>
+    <frame tileid="795" duration="100"/>
+    <frame tileid="797" duration="100"/>
+    <frame tileid="799" duration="100"/>
+    <frame tileid="801" duration="100"/>
+    <frame tileid="803" duration="100"/>
+    <frame tileid="805" duration="100"/>
+    <frame tileid="807" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1254">
+   <animation>
+    <frame tileid="660" duration="100"/>
+    <frame tileid="663" duration="100"/>
+    <frame tileid="666" duration="100"/>
+    <frame tileid="669" duration="100"/>
+    <frame tileid="672" duration="100"/>
+    <frame tileid="675" duration="100"/>
+    <frame tileid="678" duration="100"/>
+    <frame tileid="681" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1255">
+   <animation>
+    <frame tileid="661" duration="100"/>
+    <frame tileid="664" duration="100"/>
+    <frame tileid="667" duration="100"/>
+    <frame tileid="670" duration="100"/>
+    <frame tileid="673" duration="100"/>
+    <frame tileid="676" duration="100"/>
+    <frame tileid="679" duration="100"/>
+    <frame tileid="682" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1262">
+   <animation>
+    <frame tileid="430" duration="100"/>
+    <frame tileid="434" duration="100"/>
+    <frame tileid="438" duration="100"/>
+    <frame tileid="442" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1263">
+   <animation>
+    <frame tileid="431" duration="100"/>
+    <frame tileid="435" duration="100"/>
+    <frame tileid="439" duration="100"/>
+    <frame tileid="443" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1295">
+   <animation>
+    <frame tileid="463" duration="100"/>
+    <frame tileid="467" duration="100"/>
+    <frame tileid="471" duration="100"/>
+    <frame tileid="475" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1296">
+   <animation>
+    <frame tileid="464" duration="100"/>
+    <frame tileid="468" duration="100"/>
+    <frame tileid="472" duration="100"/>
+    <frame tileid="476" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1358">
+   <animation>
+    <frame tileid="825" duration="100"/>
+    <frame tileid="826" duration="100"/>
+    <frame tileid="827" duration="100"/>
+    <frame tileid="828" duration="100"/>
+    <frame tileid="829" duration="100"/>
+    <frame tileid="830" duration="100"/>
+    <frame tileid="858" duration="100"/>
+    <frame tileid="859" duration="100"/>
+    <frame tileid="860" duration="100"/>
+    <frame tileid="861" duration="100"/>
+    <frame tileid="862" duration="100"/>
+    <frame tileid="863" duration="100"/>
+    <frame tileid="832" duration="100"/>
+    <frame tileid="833" duration="100"/>
+    <frame tileid="834" duration="100"/>
+    <frame tileid="835" duration="100"/>
+    <frame tileid="836" duration="100"/>
+    <frame tileid="837" duration="100"/>
+    <frame tileid="865" duration="100"/>
+    <frame tileid="866" duration="100"/>
+    <frame tileid="867" duration="100"/>
+    <frame tileid="868" duration="100"/>
+    <frame tileid="869" duration="100"/>
+    <frame tileid="870" duration="100"/>
+    <frame tileid="839" duration="100"/>
+    <frame tileid="840" duration="100"/>
+    <frame tileid="841" duration="100"/>
+    <frame tileid="842" duration="100"/>
+    <frame tileid="843" duration="100"/>
+    <frame tileid="844" duration="100"/>
+    <frame tileid="872" duration="100"/>
+    <frame tileid="873" duration="100"/>
+    <frame tileid="874" duration="100"/>
+    <frame tileid="875" duration="100"/>
+    <frame tileid="876" duration="100"/>
+    <frame tileid="877" duration="100"/>
+    <frame tileid="846" duration="100"/>
+    <frame tileid="847" duration="100"/>
+    <frame tileid="848" duration="100"/>
+    <frame tileid="849" duration="100"/>
+    <frame tileid="850" duration="100"/>
+    <frame tileid="851" duration="100"/>
+    <frame tileid="879" duration="100"/>
+    <frame tileid="880" duration="100"/>
+    <frame tileid="881" duration="100"/>
+    <frame tileid="882" duration="100"/>
+    <frame tileid="883" duration="100"/>
+    <frame tileid="884" duration="100"/>
+    <frame tileid="891" duration="100"/>
+    <frame tileid="892" duration="100"/>
+    <frame tileid="893" duration="100"/>
+    <frame tileid="894" duration="100"/>
+    <frame tileid="895" duration="100"/>
+    <frame tileid="896" duration="100"/>
+    <frame tileid="924" duration="100"/>
+    <frame tileid="925" duration="100"/>
+    <frame tileid="926" duration="100"/>
+    <frame tileid="927" duration="100"/>
+    <frame tileid="928" duration="100"/>
+    <frame tileid="929" duration="100"/>
+    <frame tileid="898" duration="100"/>
+    <frame tileid="899" duration="100"/>
+    <frame tileid="900" duration="100"/>
+    <frame tileid="901" duration="100"/>
+    <frame tileid="902" duration="100"/>
+    <frame tileid="903" duration="100"/>
+    <frame tileid="931" duration="100"/>
+    <frame tileid="932" duration="100"/>
+    <frame tileid="933" duration="100"/>
+    <frame tileid="934" duration="100"/>
+    <frame tileid="935" duration="100"/>
+    <frame tileid="936" duration="100"/>
+    <frame tileid="905" duration="100"/>
+    <frame tileid="906" duration="100"/>
+    <frame tileid="907" duration="100"/>
+    <frame tileid="908" duration="100"/>
+    <frame tileid="909" duration="100"/>
+    <frame tileid="910" duration="100"/>
+    <frame tileid="938" duration="100"/>
+    <frame tileid="939" duration="100"/>
+    <frame tileid="940" duration="100"/>
+    <frame tileid="941" duration="100"/>
+    <frame tileid="942" duration="100"/>
+    <frame tileid="943" duration="100"/>
+    <frame tileid="912" duration="100"/>
+    <frame tileid="913" duration="100"/>
+    <frame tileid="914" duration="100"/>
+    <frame tileid="915" duration="100"/>
+    <frame tileid="916" duration="100"/>
+    <frame tileid="917" duration="100"/>
+    <frame tileid="945" duration="100"/>
+    <frame tileid="946" duration="100"/>
+    <frame tileid="947" duration="100"/>
+    <frame tileid="948" duration="100"/>
+    <frame tileid="949" duration="100"/>
+    <frame tileid="950" duration="100"/>
+   </animation>
+  </tile>
+ </tileset>
  <layer id="1" name="Below Player" width="25" height="40">
   <data encoding="csv">
 288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,288,
@@ -10073,7 +10636,7 @@
   <data encoding="csv">
 219,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,150,220,
 252,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,183,253,
-252,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,253,
+254,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,216,255,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
@@ -10083,9 +10646,9 @@
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,116,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
-221,150,150,150,150,150,150,150,248,0,0,0,249,150,150,150,150,150,150,150,150,150,150,150,150,
-285,183,183,183,183,183,183,183,182,0,0,0,182,183,183,183,183,183,183,183,183,183,183,183,183,
-285,216,216,216,216,216,216,216,215,0,0,0,215,216,216,216,216,216,216,216,216,216,216,216,216,
+221,150,150,150,150,150,150,150,248,0,0,0,249,150,150,150,150,150,150,150,150,150,150,150,222,
+252,183,183,183,183,183,183,183,182,0,0,0,182,183,183,183,183,183,183,183,183,183,183,183,253,
+254,216,216,216,216,216,216,216,215,0,0,0,215,216,216,216,216,216,216,216,216,216,216,216,255,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
@@ -10096,21 +10659,65 @@
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
-219,150,150,150,150,248,0,0,0,0,0,249,150,150,150,150,150,150,150,150,150,150,150,150,220,
+221,150,150,150,150,248,0,0,0,0,0,249,150,150,150,150,150,150,150,150,150,150,150,150,222,
 252,183,183,183,183,182,0,0,0,0,0,182,183,183,183,183,183,183,183,183,183,183,183,183,253,
-252,414,415,416,216,215,336,0,0,0,336,215,216,216,216,216,216,216,216,216,216,216,216,216,253,
-285,447,448,449,0,0,0,0,0,0,0,0,0,20,21,0,0,0,0,0,0,0,0,0,286,
-285,480,481,482,0,0,0,0,0,0,0,0,0,53,54,0,0,0,0,0,0,0,0,0,286,
-285,513,514,515,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
+254,216,216,216,216,215,336,0,0,0,336,215,216,216,216,216,216,216,216,216,216,216,216,216,255,
+285,0,0,0,0,0,0,0,0,0,0,0,0,20,21,0,0,0,0,0,0,0,0,0,286,
+285,0,0,0,0,0,0,0,0,0,0,0,0,53,54,0,0,0,0,0,0,0,0,0,286,
+285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,22,23,24,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,55,56,57,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
-285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
-285,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
+285,727,728,729,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
+285,760,761,762,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,286,
 318,320,320,320,320,319,0,0,0,0,0,318,320,320,320,320,320,320,320,320,320,320,320,320,319
+</data>
+ </layer>
+ <layer id="6" name="World2" width="25" height="40">
+  <data encoding="csv">
+0,3073,3074,3081,3082,3083,3084,3209,3210,3211,3212,3209,3210,3211,3212,2397,2398,2399,2400,0,0,0,3073,3074,0,
+0,3106,3107,3114,3115,3116,3117,3242,3243,3244,3245,3242,3243,3244,3245,2430,2431,2432,2433,0,0,0,3106,3107,0,
+0,0,0,3147,3148,3149,3150,3275,3276,3277,3278,3275,3276,3277,3278,2463,2464,2465,2466,0,0,0,0,0,0,
+0,0,0,3180,3181,3182,3183,3308,3309,3310,3311,3308,3309,3310,3311,2496,2497,2498,2499,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,3140,0,0,0,3140,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3103,3104,3105,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3136,3137,3138,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3169,3170,3171,0,0,0,0,
+0,0,0,3073,3074,0,0,0,0,0,0,0,0,0,0,0,0,0,3202,3203,3204,0,0,0,0,
+0,0,0,3106,3107,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,3070,3071,3072,3139,0,0,0,0,0,3139,0,3070,3071,3072,0,0,3070,3071,3072,0,0,0,0,
+0,0,0,0,418,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+447,448,449,450,451,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3169,3170,3171,0,0,0,
+480,481,482,483,484,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3202,3203,3204,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3075,3076,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3108,3109,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
  <layer id="3" name="Above Player" width="25" height="40">
@@ -10128,7 +10735,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,3070,3071,3072,3070,3071,3072,0,0,0,0,0,3070,3071,3072,0,3070,3071,3072,0,3070,3071,3072,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
