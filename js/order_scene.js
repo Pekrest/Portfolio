@@ -10,6 +10,35 @@ export class OrderScene extends Phaser.Scene {
     this.load.image("item2", "../assets/item2.png");
     this.load.image("item3", "../assets/item3.png");
     this.load.image("pixelCoin", "../assets/pixelCoin.png");
+    this.load.image("Telecen Table Metal", "..assets/images/UGCs/Telecen Table Metal.png"); 
+    this.load.image("Telecen Table Wooden", "..assets/images/UGCs/Telecen Table Wooden.png"); 
+    this.load.image("Television with Glass stand", "..assets/images/UGCs/Television with Glass stand.png"); 
+    this.load.image("Television with Metal stand", "..assets/images/UGCs/Television with Metal stand.png"); 
+    this.load.image("Television with Wooden stand", "..assets/images/UGCs/Television with Wooden stand.png"); 
+    this.load.image("Wall Lamp Blue", "..assets/images/UGCs/Wall Lamp Blue.png"); 
+    this.load.image("Wall Lamp Single", "..assets/images/UGCs/Wall Lamp Single.png"); 
+    this.load.image("wall lamp", "..assets/images/UGCs/wall lamp.png"); 
+    this.load.image("Welcome Sign", "..assets/images/UGCs/Welcome Sign.png"); 
+    this.load.image("Bechi Fence", "..assets/images/UGCs/Bechi Fence.png"); 
+    this.load.image("Bixelnaire Bar", "..assets/images/UGCs/Bixelnaire Bar.png"); 
+    this.load.image("Borey Balcony", "..assets/images/UGCs/Borey Balcony.png"); 
+    this.load.image("Borey Door", "..assets/images/UGCs/Borey Door.png"); 
+    this.load.image("Borey Window", "..assets/images/UGCs/Borey Window.png"); 
+    this.load.image("Deer Head", "..assets/images/UGCs/Deer Head.png"); 
+    this.load.image("Little Goose", "..assets/images/UGCs/Little Goose.png"); 
+    this.load.image("Telecen Couch Black", "..assets/images/UGCs/Telecen Couch Black.png"); 
+    this.load.image("Telecen Couch Purple", "..assets/images/UGCs/Telecen Couch Purple.png"); 
+    this.load.image("Telecen Dining Glass", "..assets/images/UGCs/Telecen Dining Glass.png"); 
+    this.load.image("Telecen Dining Metal", "..assets/images/UGCs/Telecen Dining Metal.png"); 
+    this.load.image("Telecen Dining Wooden", "..assets/images/UGCs/Telecen Dining Wooden.png"); 
+    this.load.image("Telecen Kitchen Glass L", "..assets/images/UGCs/Telecen Kitchen Glass L.png");
+     this.load.image("Telecen Kitchen Glass R", "..assets/images/UGCs/Telecen Kitchen Glass R.png"); 
+    this.load.image("Telecen Kitchen Metal L", "..assets/images/UGCs/Telecen Kitchen Metal L.png"); 
+    this.load.image("Telecen Kitchen Metal M", "..assets/images/UGCs/Telecen Kitchen Metal M.png"); 
+    this.load.image("Telecen Kitchen Metal R", "..assets/images/UGCs/Telecen Kitchen Metal R.png"); 
+    this.load.image("Telecen Rug Black", "..assets/images/UGCs/Telecen Rug Black.png"); 
+    this.load.image("Telecen Rug Blue", "..assets/images/UGCs/Telecen Rug Blue.png"); 
+    this.load.image("Telecen Table Glass", "..assets/images/UGCs/Telecen Table Glass.png");
   }
 
   create(data) {
@@ -48,8 +77,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item3.png" alt="Item 3" class="item-image">
-            <span class="item-name">Item 3</span>
+            <img src="assets/images/UGCs/Bechi Fence.png" alt="Bechi Fence" class="item-image">
+            <span class="item-name">Bechi Fence</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -57,8 +86,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item1.png" alt="Item 4" class="item-image">
-            <span class="item-name">Item 4</span>
+            <img src="assets/images/UGCs/Little Goose.png" alt="Little Goose" class="item-image">
+            <span class="item-name">Little Goose</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -66,8 +95,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item2.png" alt="Item 5" class="item-image">
-            <span class="item-name">Item 5</span>
+            <img src="assets/images/UGCs/Welcome Sign.png" alt="Welcome Sign" class="item-image">
+            <span class="item-name">Welcome Sign</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -75,8 +104,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item3.png" alt="Item 6" class="item-image">
-            <span class="item-name">Item 6</span>
+            <img src="assets/images/UGCs/Bixelnaire Bar.png" alt="Bixelnaire Bar" class="item-image">
+            <span class="item-name">Bixelnaire Bar</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -84,8 +113,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item1.png" alt="Item 7" class="item-image">
-            <span class="item-name">Item 4</span>
+            <img src="assets/images/UGCs/Deer Head.png" alt="Deer Head" class="item-image">
+            <span class="item-name">Deer Head</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -93,8 +122,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item2.png" alt="Item 8" class="item-image">
-            <span class="item-name">Item 5</span>
+            <img src="assets/images/UGCs/Wall Lamp Single.png" alt="Wall Lamp Single" class="item-image">
+            <span class="item-name">Wall Lamp Single</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -102,8 +131,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item3.png" alt="Item 9" class="item-image">
-            <span class="item-name">Item 6</span>
+            <img src="assets/images/UGCs/wall lamp.png" alt="Wall Lamp" class="item-image">
+            <span class="item-name">wall lamp.png</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -111,8 +140,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item1.png" alt="Item 10" class="item-image">
-            <span class="item-name">Item 10</span>
+            <img src="assets/images/UGCs/Wall Lamp Blue.png" alt="Wall Lamp Blue" class="item-image">
+            <span class="item-name">Wall Lamp Blue</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -120,8 +149,8 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item2.png" alt="Item 11" class="item-image">
-            <span class="item-name">Item 11</span>
+            <img src="assets/images/UGCs/Telecen Table Metal.png" alt="Telecen Table Metal" class="item-image">
+            <span class="item-name">Telecen Table Metal</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -129,8 +158,179 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/item3.png" alt="Item 12" class="item-image">
-            <span class="item-name">Item 12</span>
+            <img src="assets/images/UGCs/Telecen Table Wooden.png" alt="Telecen Table Wooden" class="item-image">
+            <span class="item-name">Telecen Table Wooden</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Table Glass.png" alt="Telecen Table Glass" class="item-image">
+            <span class="item-name">Telecen Table Glass</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Television with Glass stand.png" alt="Television with Glass stand" class="item-image">
+            <span class="item-name">Television with Glass stand</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Television with Metal stand.png" alt="Television with Metal stand" class="item-image">
+            <span class="item-name">Television with Metal stand</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Television with Wooden stand.png" alt="Television with Wooden stand" class="item-image">
+            <span class="item-name">Television with Wooden stand</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Borey Balcony.png" alt="Borey Balcony" class="item-image">
+            <span class="item-name">Borey Balcony</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Borey Door.png" alt="Borey Door" class="item-image">
+            <span class="item-name">Borey Door</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Borey Window.png" alt="Borey Window" class="item-image">
+            <span class="item-name">Borey Window</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Couch Black.png" alt="Telecen Couch Black" class="item-image">
+            <span class="item-name">Telecen Couch Black</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Couch Purple.png" alt="Telecen Couch Purple" class="item-image">
+            <span class="item-name">Telecen Couch Purple</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Dining Glass.png" alt="Telecen Dining Glass" class="item-image">
+            <span class="item-name">Telecen Dining Glass</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Dining Metal.png" alt="Telecen Dining Metal" class="item-image">
+            <span class="item-name">Telecen Dining Metal</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Dining Wooden.png" alt="Telecen Dining Wooden" class="item-image">
+            <span class="item-name">Telecen Dining Wooden</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Kitchen Metal L.png" alt="Telecen Kitchen Metal L" class="item-image">
+            <span class="item-name">Telecen Kitchen Metal L</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Kitchen Metal M.png" alt="Telecen Kitchen Metal M" class="item-image">
+            <span class="item-name">Telecen Kitchen Metal M</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Kitchen Metal R.png" alt="Telecen Kitchen Metal R" class="item-image">
+            <span class="item-name">Telecen Kitchen Metal R</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Kitchen Glass L.png" alt="Telecen Kitchen Glass L" class="item-image">
+            <span class="item-name">Telecen Kitchen Glass L</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+           <div class="item">
+            <img src="assets/images/UGCs/Telecen Kitchen Glass R.png" alt="Telecen Kitchen Glass R" class="item-image">
+            <span class="item-name">Telecen Kitchen Glass R</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Rug Black.png" alt="Telecen Rug Black" class="item-image">
+            <span class="item-name">Telecen Rug Black</span>
+            <div class="price-container">
+              <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
+              <span class="price">100</span>
+            </div>
+            <button>ORDER</button>
+          </div>
+          <div class="item">
+            <img src="assets/images/UGCs/Telecen Rug Blue.png" alt="Telecen Rug Blue" class="item-image">
+            <span class="item-name">Telecen Rug Blue</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
               <span class="price">100</span>
@@ -215,9 +415,11 @@ export class OrderScene extends Phaser.Scene {
       }
       .item-name {
         margin: 5px 0;
+        height: 40px;
         font-weight: bold;
         font-size: 30px;
         color: #ffffff;
+        
       }
       .price-container {
         display: flex;
