@@ -28,6 +28,7 @@ export class MainScene extends Phaser.Scene {
 
   preload() {
     this.load.image("tiles", "../assets/tilesets/blode-32px.png");
+    this.load.image("UgcTiles", "../assets/tilesets/UGCs-32px.png");
     this.load.tilemapTiledJSON("map", "../assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
@@ -59,38 +60,42 @@ export class MainScene extends Phaser.Scene {
     const map = this.make.tilemap({ key: "map" });
 
     const tileset = map.addTilesetImage("blode", "tiles");
+    const UGCtileset = map.addTilesetImage("UGCs", "UgcTiles");
     
-    const belowLayer = map.createLayer("Below Player", tileset, 0, 0);
-    const belowLayer2 = map.createLayer("Below Player2", tileset, 0, 0);
-    const worldLayer = map.createLayer("World", tileset, 0, 0);
-    const aboveLayer = map.createLayer("Above Player", tileset, 0, 0);
-    const worldLayer2 = map.createLayer("World2", tileset, 0, 0);
-    const aboveLayer2 = map.createLayer("Above Player2", tileset, 0, 0);
+    const belowLayer = map.createLayer("Below Player", [tileset, UGCtileset], 0, 0);
+    const belowLayer2 = map.createLayer("Below Player2", [tileset, UGCtileset], 0, 0);
+    const worldLayer = map.createLayer("World",[tileset, UGCtileset], 0, 0);
+    const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset], 0, 0);
+    const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset], 0, 0);
+    const aboveLayer2 = map.createLayer("Above Player2", [tileset, UGCtileset], 0, 0);
 
-    // Initialize animation
+    // Initialize animation for both tilesets
+   // Initialize animations for all tilesets
     this.animatedTiles = [];
-    const tilesetData = map.tilesets[0].tileData; // Assuming single tileset
-    for (let tileId in tilesetData) {
-      if (tilesetData[tileId].animation) {
-        map.layers.forEach(layer => {
-          if (layer.tilemapLayer) { // Only dynamic layers
-            layer.data.forEach(row => {
-              row.forEach(tile => {
-                if (tile.index === parseInt(tileId) + map.tilesets[0].firstgid) {
-                  this.animatedTiles.push({
-                    tile: tile,
-                    animation: tilesetData[tileId].animation,
-                    firstgid: map.tilesets[0].firstgid,
-                    elapsedTime: 0,
-                    currentFrame: 0
-                  });
-                }
-              });
-            });
-          }
-        });
-      }
-    }
+    map.tilesets.forEach(tileset => {
+        const tilesetData = tileset.tileData || {};
+        for (let tileId in tilesetData) {
+            if (tilesetData[tileId].animation) {
+                map.layers.forEach(layer => {
+                    if (layer.tilemapLayer) { // Only dynamic layers
+                        layer.data.forEach(row => {
+                            row.forEach(tile => {
+                                if (tile.index === parseInt(tileId) + tileset.firstgid) {
+                                    this.animatedTiles.push({
+                                        tile: tile,
+                                        animation: tilesetData[tileId].animation,
+                                        firstgid: tileset.firstgid,
+                                        elapsedTime: 0,
+                                        currentFrame: 0
+                                    });
+                                }
+                            });
+                        });
+                    }
+                });
+            }
+        }
+    });
    
     worldLayer.setCollisionByProperty({ collides: true }); 
     worldLayer2.setCollisionByProperty({ collides: true });
