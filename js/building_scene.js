@@ -78,15 +78,14 @@ export class BuildingScene extends Phaser.Scene {
       if (!map.findObject("Objectsc", (obj) => obj.name === "Home Spawn")) {
       }
       this.player = this.physics.add
-        .sprite(spawnPoint.x, spawnPoint.y, "atlas", data.playerFrame || "misa-front")
-        .setSize(30, 20)
-        .setOffset(0, 45);
+        .sprite(spawnPoint.x, spawnPoint.y, "atlas", data.playerFrame || "king-front")
+        .setSize(25, 18)
+        .setOffset(4.5, 30);
       
     // Enable collision with world bounds
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.player.setCollideWorldBounds(true);
-    console.log("Physics world bounds set to:", map.widthInPixels, "x", map.heightInPixels);
-  
+     
       this.physics.add.collider(this.player, [worldLayer, worldLayer2]);
   
       const door = map.findObject("Objectsc", (obj) => obj.name === "Home Exit");
@@ -114,7 +113,7 @@ export class BuildingScene extends Phaser.Scene {
           this.scene.start('MainScene', { 
             playerX: returnX, 
             playerY: returnY,
-            playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "misa-front",
+            playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "king-front",
             health: this.health // Pass health to MainScene
           });
         });
@@ -228,7 +227,7 @@ export class BuildingScene extends Phaser.Scene {
         this.scene.start('MainScene', {
           playerX: spawnX,
           playerY: spawnY,
-          playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "misa-front",
+          playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "king-front",
           health: this.health,
           isInitialSpawn: false
         });
@@ -456,48 +455,48 @@ export class BuildingScene extends Phaser.Scene {
     // Handle keyboard animations
     if (this.sys.game.device.os.desktop) {
       if (leftDown) {
-        this.player.anims.play("misa-left-walk", true);
+        this.player.anims.play("king-left-walk", true);
       } else if (rightDown) {
-        this.player.anims.play("misa-right-walk", true);
+        this.player.anims.play("king-right-walk", true);
       } else if (upDown) {
-        this.player.anims.play("misa-back-walk", true);
+        this.player.anims.play("king-back-walk", true);
       } else if (downDown) {
-        this.player.anims.play("misa-front-walk", true);
+        this.player.anims.play("king-front-walk", true);
       } else {
         this.player.anims.stop();
-        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
       }
     } else {
       // Joystick animations (unchanged)
       const vx = this.player.body.velocity.x;
       const vy = this.player.body.velocity.y;
       if (Math.abs(vx) > Math.abs(vy)) {
-        if (vx < 0 && this.player.anims.currentAnim?.key !== "misa-left-walk") {
-          this.player.anims.play("misa-left-walk", true);
-        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "misa-right-walk") {
-          this.player.anims.play("misa-right-walk", true);
+        if (vx < 0 && this.player.anims.currentAnim?.key !== "king-left-walk") {
+          this.player.anims.play("king-left-walk", true);
+        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "king-right-walk") {
+          this.player.anims.play("king-right-walk", true);
         } else if (vx === 0 && vy === 0) {
           this.player.anims.stop();
-          if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+          if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
         }
       } else if (Math.abs(vy) > 0) {
-        if (vy < 0 && this.player.anims.currentAnim?.key !== "misa-back-walk") {
-          this.player.anims.play("misa-back-walk", true);
-        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "misa-front-walk") {
-          this.player.anims.play("misa-front-walk", true);
+        if (vy < 0 && this.player.anims.currentAnim?.key !== "king-back-walk") {
+          this.player.anims.play("king-back-walk", true);
+        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "king-front-walk") {
+          this.player.anims.play("king-front-walk", true);
         }
       } else if (vx === 0 && vy === 0) {
         this.player.anims.stop();
-        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
       }
     }
 

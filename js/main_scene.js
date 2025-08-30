@@ -32,7 +32,7 @@ export class MainScene extends Phaser.Scene {
     this.load.tilemapTiledJSON("map", "../assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
-    this.load.atlas("atlas", "../assets/atlas/atlas.png", "../assets/atlas/atlas.json");
+    this.load.atlas("atlas", "../assets/atlas/katlas.png", "../assets/atlas/katlas.json");
     this.load.image("profile", "../assets/images/profile.png"); // Load the profile image
     this.load.image("dialogueImage", "../assets/images/dialogueImage.png");
     this.load.image("settingButtonDw", "../assets/images/buttons/settingsButton1.png");
@@ -69,7 +69,6 @@ export class MainScene extends Phaser.Scene {
     const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset], 0, 0);
     const aboveLayer2 = map.createLayer("Above Player2", [tileset, UGCtileset], 0, 0);
 
-    // Initialize animation for both tilesets
    // Initialize animations for all tilesets
     this.animatedTiles = [];
     map.tilesets.forEach(tileset => {
@@ -106,12 +105,12 @@ export class MainScene extends Phaser.Scene {
  // Use incoming coordinates if provided, otherwise use Spawn Point
     let spawnX = 100;
     let spawnY = 100;
-    let spawnFrame = "misa-front";
+    let spawnFrame = "king-front";
     let isInitialSpawn = !data.playerX && !data.playerY; // Check if this is the initial spawn
     if (data && data.playerX !== undefined && data.playerY !== undefined) {
       spawnX = data.playerX;
       spawnY = data.playerY;
-      spawnFrame = data.playerFrame || "misa-front";
+      spawnFrame = data.playerFrame || "king-front";
     } else {
       const spawnPoint = map.findObject("Objects", (obj) => obj.name === "Spawn Point");
       if (spawnPoint) {
@@ -123,13 +122,13 @@ export class MainScene extends Phaser.Scene {
 
     this.player = this.physics.add
       .sprite(spawnX, spawnY, "atlas", spawnFrame)
-      .setSize(30, 20)
-      .setOffset(0, 45);
+      .setSize(25, 18)
+      .setOffset(4.5, 30);
     
     // Enable collision with world bounds
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.player.setCollideWorldBounds(true);
-    console.log("Physics world bounds set to:", map.widthInPixels, "x", map.heightInPixels);
+   
   
 
     this.physics.add.collider(this.player, [worldLayer, worldLayer2]); // Fixed array syntax
@@ -146,7 +145,7 @@ export class MainScene extends Phaser.Scene {
           this.scene.start(targetScene, { 
             playerX: this.player.x, 
             playerY: this.player.y,
-            playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "misa-front",
+            playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "king-front",
             health: this.health // Pass health to target scene
           });
         });
@@ -163,34 +162,34 @@ export class MainScene extends Phaser.Scene {
 
     // Create animations only if they don't exist
     const anims = this.anims;
-    if (!anims.exists("misa-left-walk")) {
+    if (!anims.exists("king-left-walk")) {
       anims.create({
-        key: "misa-left-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "misa-left-walk.", start: 0, end: 3, zeroPad: 3 }),
+        key: "king-left-walk",
+        frames: anims.generateFrameNames("atlas", { prefix: "king-left-walk.", start: 0, end: 3, zeroPad: 3 }),
         frameRate: 10,
         repeat: -1,
       });
     }
-    if (!anims.exists("misa-right-walk")) {
+    if (!anims.exists("king-right-walk")) {
       anims.create({
-        key: "misa-right-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "misa-right-walk.", start: 0, end: 3, zeroPad: 3 }),
+        key: "king-right-walk",
+        frames: anims.generateFrameNames("atlas", { prefix: "king-right-walk.", start: 0, end: 3, zeroPad: 3 }),
         frameRate: 10,
         repeat: -1,
       });
     }
-    if (!anims.exists("misa-front-walk")) {
+    if (!anims.exists("king-front-walk")) {
       anims.create({
-        key: "misa-front-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "misa-front-walk.", start: 0, end: 3, zeroPad: 3 }),
+        key: "king-front-walk",
+        frames: anims.generateFrameNames("atlas", { prefix: "king-front-walk.", start: 0, end: 3, zeroPad: 3 }),
         frameRate: 10,
         repeat: -1,
       });
     }
-    if (!anims.exists("misa-back-walk")) {
+    if (!anims.exists("king-back-walk")) {
       anims.create({
-        key: "misa-back-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "misa-back-walk.", start: 0, end: 3, zeroPad: 3 }),
+        key: "king-back-walk",
+        frames: anims.generateFrameNames("atlas", { prefix: "king-back-walk.", start: 0, end: 3, zeroPad: 3 }),
         frameRate: 10,
         repeat: -1,
       });
@@ -201,13 +200,7 @@ export class MainScene extends Phaser.Scene {
     camera.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     camera.centerOn(this.player.x, this.player.y);
 
-    console.log("Camera bounds:", camera.getBounds());
-    console.log("Player position:", this.player.x, this.player.y);
-    console.log("Map dimensions:", map.widthInPixels, map.heightInPixels);
-    console.log("Camera zoom:", camera.zoom);
-    console.log("Canvas size:", this.scale.width, this.scale.height);
-
-    this.minimap = this.cameras.add(
+       this.minimap = this.cameras.add(
       this.scale.width - 240 - 10,
       10,
       240,
@@ -305,7 +298,7 @@ export class MainScene extends Phaser.Scene {
       .setOrigin(0, 0);
     // Create circular mask for profile image
     const maskShape = this.add.graphics()
-      .fillCircle(35, 35, 26)
+      .fillCircle(36, 35, 26)
       .setScrollFactor(0)
       .setDepth(32);
     const mask = maskShape.createGeometryMask();
@@ -362,8 +355,8 @@ export class MainScene extends Phaser.Scene {
       .setOrigin(0.5, 0.5);
 
       this.fullDialogueText = "HELLO!! I'M KINGKREST\nWelcome to my Pixel Art Portfolio!\nExplore my creations and enjoy!";
-      this.dialogueText = this.add.text(centerX - 185, centerY + 140, "", {
-        font: "20px monospace",
+      this.dialogueText = this.add.text(centerX - 185, centerY + 128, "", {
+        font: "18px monospace",
         fontStyle: "bold",
         fill: "#FFFFFF",
         wordWrap: { width: 380 }
@@ -669,48 +662,48 @@ export class MainScene extends Phaser.Scene {
     // Handle keyboard animations
     if (this.sys.game.device.os.desktop) {
       if (leftDown) {
-        this.player.anims.play("misa-left-walk", true);
+        this.player.anims.play("king-left-walk", true);
       } else if (rightDown) {
-        this.player.anims.play("misa-right-walk", true);
+        this.player.anims.play("king-right-walk", true);
       } else if (upDown) {
-        this.player.anims.play("misa-back-walk", true);
+        this.player.anims.play("king-back-walk", true);
       } else if (downDown) {
-        this.player.anims.play("misa-front-walk", true);
+        this.player.anims.play("king-front-walk", true);
       } else {
         this.player.anims.stop();
-        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
       }
     } else {
       // Joystick animations (unchanged)
       const vx = this.player.body.velocity.x;
       const vy = this.player.body.velocity.y;
       if (Math.abs(vx) > Math.abs(vy)) {
-        if (vx < 0 && this.player.anims.currentAnim?.key !== "misa-left-walk") {
-          this.player.anims.play("misa-left-walk", true);
-        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "misa-right-walk") {
-          this.player.anims.play("misa-right-walk", true);
+        if (vx < 0 && this.player.anims.currentAnim?.key !== "king-left-walk") {
+          this.player.anims.play("king-left-walk", true);
+        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "king-right-walk") {
+          this.player.anims.play("king-right-walk", true);
         } else if (vx === 0 && vy === 0) {
           this.player.anims.stop();
-          if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+          if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
         }
       } else if (Math.abs(vy) > 0) {
-        if (vy < 0 && this.player.anims.currentAnim?.key !== "misa-back-walk") {
-          this.player.anims.play("misa-back-walk", true);
-        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "misa-front-walk") {
-          this.player.anims.play("misa-front-walk", true);
+        if (vy < 0 && this.player.anims.currentAnim?.key !== "king-back-walk") {
+          this.player.anims.play("king-back-walk", true);
+        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "king-front-walk") {
+          this.player.anims.play("king-front-walk", true);
         }
       } else if (vx === 0 && vy === 0) {
         this.player.anims.stop();
-        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
       }
     }
 

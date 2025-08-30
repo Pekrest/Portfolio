@@ -10,35 +10,35 @@ export class OrderScene extends Phaser.Scene {
     this.load.image("item2", "../assets/item2.png");
     this.load.image("item3", "../assets/item3.png");
     this.load.image("pixelCoin", "../assets/pixelCoin.png");
-    this.load.image("Telecen Table Metal", "..assets/images/UGCs/Telecen_Table_Metal.png"); 
-    this.load.image("Telecen Table Wooden", "..assets/images/UGCs/Telecen_Table_Wooden.png"); 
-    this.load.image("Television with Glass stand", "..assets/images/UGCs/Television_with_Glass_stand.png"); 
-    this.load.image("Television with Metal stand", "..assets/images/UGCs/Television_with_Metal_stand.png"); 
-    this.load.image("Television with Wooden stand", "..assets/images/UGCs/Television_with_Wooden_stand.png"); 
-    this.load.image("Wall Lamp Blue", "..assets/images/UGCs/Wall_Lamp_Blue.png"); 
-    this.load.image("Wall Lamp Single", "..assets/images/UGCs/Wall_Lamp_Single.png"); 
-    this.load.image("wall lamp", "..assets/images/UGCs/wall_lamp.png"); 
-    this.load.image("Welcome Sign", "..assets/images/UGCs/Welcome_Sign.png"); 
-    this.load.image("Bechi Fence", "..assets/images/UGCs/Bechi_Fence.png"); 
-    this.load.image("Bixelnaire Bar", "..assets/images/UGCs/Bixelnaire_Bar.png"); 
-    this.load.image("Borey Balcony", "..assets/images/UGCs/Borey_Balcony.png"); 
-    this.load.image("Borey Door", "..assets/images/UGCs/Borey_Door.png"); 
-    this.load.image("Borey Window", "..assets/images/UGCs/Borey_Window.png"); 
-    this.load.image("Deer Head", "..assets/images/UGCs/Deer_Head.png"); 
-    this.load.image("Little Goose", "..assets/images/UGCs/Little_Goose.png"); 
-    this.load.image("Telecen Couch Black", "..assets/images/UGCs/Telecen_Couch_Black.png"); 
-    this.load.image("Telecen Couch Purple", "..assets/images/UGCs/Telecen_Couch_Purple.png"); 
-    this.load.image("Telecen Dining Glass", "..assets/images/UGCs/Telecen_Dining_Glass.png"); 
-    this.load.image("Telecen Dining Metal", "..assets/images/UGCs/Telecen_Dining_Metal.png"); 
-    this.load.image("Telecen Dining Wooden", "..assets/images/UGCs/Telecen_Dining_Wooden.png"); 
-    this.load.image("Telecen Kitchen Glass L", "..assets/images/UGCs/Telecen_Kitchen_Glass_L.png");
-     this.load.image("Telecen Kitchen Glass R", "..assets/images/UGCs/Telecen_Kitchen_Glass_R.png"); 
-    this.load.image("Telecen Kitchen Metal L", "..assets/images/UGCs/Telecen_Kitchen_Metal_L.png"); 
-    this.load.image("Telecen Kitchen Metal M", "..assets/images/UGCs/Telecen_Kitchen_Metal_M.png"); 
-    this.load.image("Telecen Kitchen Metal R", "..assets/images/UGCs/Telecen_Kitchen_Metal_R.png"); 
-    this.load.image("Telecen Rug Black", "..assets/images/UGCs/Telecen_Rug_Black.png"); 
-    this.load.image("Telecen Rug Blue", "..assets/images/UGCs/Telecen_Rug_Blue.png"); 
-    this.load.image("Telecen Table Glass", "..assets/images/UGCs/Telecen_Table_Glass.png");
+    this.load.image("Telecen Table Metal", "../assets/images/UGCs/TelecenTableMetal.png");
+    this.load.image("Telecen Table Metal", "../assets/images/UGCs/TelecenTableWooden");
+    this.load.image("Television with Glass stand", "../assets/images/UGCs/TelevisionwithGlassStand.png"); 
+    this.load.image("Television with Metal stand", "../assets/images/UGCs/TelevisionwithMetalStand.png"); 
+    this.load.image("Television with Wooden stand", "../assets/images/UGCs/TelevisionwithWoodenStand.png"); 
+    this.load.image("Wall Lamp Blue", "../assets/images/UGCs/Wall_Lamp_Blue.png"); 
+    this.load.image("Wall Lamp Single", "../assets/images/UGCs/Wall_Lamp_Single.png"); 
+    this.load.image("wall lamp", "../assets/images/UGCs/wall_lamp.png"); 
+    this.load.image("Welcome Sign", "../assets/images/UGCs/Welcome_Sign.png"); 
+    this.load.image("Bechi Fence", "../assets/images/UGCs/Bechi_Fence.png"); 
+    this.load.image("Bixelnaire Bar", "../assets/images/UGCs/Bixelnaire_Bar.png"); 
+    this.load.image("Borey Balcony", "../assets/images/UGCs/Borey_Balcony.png"); 
+    this.load.image("Borey Door", "../assets/images/UGCs/Borey_Door.png"); 
+    this.load.image("Borey Window", "../assets/images/UGCs/Borey_Window.png"); 
+    this.load.image("Deer Head", "../assets/images/UGCs/Deer_Head.png"); 
+    this.load.image("Little Goose", "../assets/images/UGCs/Little_Goose.png"); 
+    this.load.image("Telecen Couch Black", "../assets/images/UGCs/Telecen_Couch_Black.png"); 
+    this.load.image("Telecen Couch Purple", "../assets/images/UGCs/Telecen_Couch_Purple.png"); 
+    this.load.image("Telecen Dining Glass", "../assets/images/UGCs/Telecen_Dining_Glass.png"); 
+    this.load.image("Telecen Dining Metal", "../assets/images/UGCs/Telecen_Dining_Metal.png"); 
+    this.load.image("Telecen Dining Wooden", "../assets/images/UGCs/Telecen_Dining_Wooden.png"); 
+    this.load.image("Telecen Kitchen Glass L", "../assets/images/UGCs/Telecen_Kitchen_Glass_L.png");
+     this.load.image("Telecen Kitchen Glass R", "../assets/images/UGCs/Telecen_Kitchen_Glass_R.png"); 
+    this.load.image("Telecen Kitchen Metal L", "../assets/images/UGCs/Telecen_Kitchen_Metal_L.png"); 
+    this.load.image("Telecen Kitchen Metal M", "../assets/images/UGCs/Telecen_Kitchen_Metal_M.png"); 
+    this.load.image("Telecen Kitchen Metal R", "../assets/images/UGCs/Telecen_Kitchen_Metal_R.png"); 
+    this.load.image("Telecen Rug Black", "../assets/images/UGCs/Telecen_Rug_Black.png"); 
+    this.load.image("Telecen Rug Blue", "../assets/images/UGCs/Telecen_Rug_Blue.png"); 
+    this.load.image("Telecen Table Glass", "../assets/images/UGCs/TelecenTableGlass.png");
   }
 
   create(data) {
@@ -149,7 +149,7 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/images/UGCs/Telecen_Table_Metal.png" alt="Telecen Table Metal" class="item-image">
+            <img src="assets/images/UGCs/TelecenTableMetal.png" alt="Telecen Table Metal" class="item-image">
             <span class="item-name">Telecen Table Metal</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
@@ -158,7 +158,7 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/images/UGCs/Telecen_Table_Wooden.png" alt="Telecen Table Wooden" class="item-image">
+            <img src="assets/images/UGCs/TelecenTableWooden.png" alt="Telecen Table Wooden" class="item-image">
             <span class="item-name">Telecen Table Wooden</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
@@ -167,7 +167,7 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/images/UGCs/Telecen_Table_Glass.png" alt="Telecen Table Glass" class="item-image">
+            <img src="assets/images/UGCs/TelecenTableGlass.png" alt="Telecen Table Glass" class="item-image">
             <span class="item-name">Telecen Table Glass</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
@@ -176,7 +176,7 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/images/UGCs/Television_with_Glass_stand.png" alt="Television with Glass stand" class="item-image">
+            <img src="assets/images/UGCs/TelevisionwithGlassStand.png" alt="Television with Glass stand" class="item-image">
             <span class="item-name">Television with Glass stand</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
@@ -185,7 +185,7 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/images/UGCs/Television_with_Metal_stand.png" alt="Television with Metal stand" class="item-image">
+            <img src="assets/images/UGCs/TelevisionwithMetalStand.png" alt="Television with Metal stand" class="item-image">
             <span class="item-name">Television with Metal stand</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">
@@ -194,7 +194,7 @@ export class OrderScene extends Phaser.Scene {
             <button>ORDER</button>
           </div>
           <div class="item">
-            <img src="assets/images/UGCs/Television_with_Wooden_stand.png" alt="Television with Wooden stand" class="item-image">
+            <img src="assets/images/UGCs/TelevisionwithWoodenStand.png" alt="Television with Wooden stand" class="item-image">
             <span class="item-name">Television with Wooden stand</span>
             <div class="price-container">
               <img src="assets/pixelCoin.png" alt="pixelCoin" class="price-icon">

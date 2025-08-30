@@ -72,15 +72,14 @@ export class UgcStoreScene extends Phaser.Scene {
     const spawnPoint = map.findObject("UgcObjects", (obj) => obj.name === "Store Spawn") || { x: data.playerX, y: data.playerY };
       if (!map.findObject("UgcObjects", (obj) => obj.name === "Store Spawn")) {
       }
-      this.player = this.physics.add
-        .sprite(spawnPoint.x, spawnPoint.y, "atlas", data.playerFrame || "misa-front")
-        .setSize(30, 20)
-        .setOffset(0, 45);
-      
+     this.player = this.physics.add
+      .sprite(spawnPoint.x, spawnPoint.y, "atlas", data.playerFrame || "king-front")
+      .setSize(25, 18)
+      .setOffset(4.5, 30);
+
     // Enable collision with world bounds
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.player.setCollideWorldBounds(true);
-    console.log("Physics world bounds set to:", map.widthInPixels, "x", map.heightInPixels);
   
       this.physics.add.collider(this.player,[worldLayer, worldLayer2]);
   
@@ -109,7 +108,7 @@ export class UgcStoreScene extends Phaser.Scene {
           this.scene.start('MainScene', { 
             playerX: returnX, 
             playerY: returnY,
-            playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "misa-front",
+            playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "king-front",
             health: this.health // Pass health to MainScene
           });
         });
@@ -159,7 +158,6 @@ export class UgcStoreScene extends Phaser.Scene {
             const top = (window.screen.height - height) / 2;
             window.open(url, 'buyPopup', `width=${width},height=${height},scrollbars=yes,resizable=yes,left=${left},top=${top}`);
           }
-          console.log(`Clicked asset: ${tile.properties.assetId} at ${tile.x},${tile.y}`);
         }
       });
 
@@ -182,7 +180,8 @@ export class UgcStoreScene extends Phaser.Scene {
       A: Phaser.Input.Keyboard.KeyCodes.A,
       S: Phaser.Input.Keyboard.KeyCodes.S,
       D: Phaser.Input.Keyboard.KeyCodes.D,
-      L: Phaser.Input.Keyboard.KeyCodes.L // Key to decrease health for testing
+      L: Phaser.Input.Keyboard.KeyCodes.L, // Key to decrease health for testing
+      ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER // Add Enter key for dialogue
     });
 
  // Create life bar (background and fill)
@@ -271,11 +270,98 @@ export class UgcStoreScene extends Phaser.Scene {
         this.scene.start('MainScene', {
           playerX: spawnX,
           playerY: spawnY,
-          playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "misa-front",
+          playerFrame: this.player.texture.key === "atlas" ? this.player.frame.name : "king-front",
           health: this.health,
           isInitialSpawn: false
         });
       });*/
+
+      if (spawnPoint ) {
+      this.physics.pause(); // Pause physics to prevent movement
+      this.dialogueGroup = this.add.group();
+
+      // Center dialogue elements
+      const centerX = this.scale.width / 2;
+      const centerY = this.scale.height / 2;
+      
+      this.dialogueBox = this.add.image(200, 400, 'dialogueImage')
+      .setScrollFactor(0)
+      .setDepth(32)
+      .setOrigin(0, 0);
+
+      this.fullDialogueText = "Welcome to UGC Store\nHere you can order my Pixels UGCs by clicking on Counter or any UGC.\nWhen ordered you will be contacted and it will be delivered to you in-game.";
+      this.dialogueText = this.add.text(215, 420, "", {
+        font: "15px monospace",
+        fontStyle: "bold",
+        fill: "#FFFFFF",
+        wordWrap: { width: 380 }
+      })
+        .setScrollFactor(0)
+        .setDepth(33)
+        .setAlpha(0); // Initially invisible
+
+      this.enterButtonPressed = false; // Add this if not already defined
+
+      this.enterButton = this.add.sprite(400, 525, 'enterButtonId')
+        .setScrollFactor(0)
+        .setDepth(33);
+
+      this.dialogueGroup.addMultiple([this.dialogueBox, this.dialogueText, this.enterButton]);
+      
+      // Explicitly enable pointer input
+      this.input.mouse.enabled = false;
+
+      // Start typewriter effect
+      this.currentTextIndex = 0;
+      this.isTypewriterComplete = false;
+      this.time.addEvent({
+        delay: 20, // 20ms per character
+        callback: () => {
+          if (this.currentTextIndex < this.fullDialogueText.length) {
+            this.currentTextIndex++;
+            this.dialogueText.setText(this.fullDialogueText.substring(0, this.currentTextIndex));
+            this.dialogueText.setAlpha(1); // Make visible text fully opaque
+          }
+          if (this.currentTextIndex >= this.fullDialogueText.length && !this.isTypewriterComplete) {
+            this.enterButton.setTexture('enterButtonDw');
+            this.enterButton.setInteractive({ useHandCursor: true })
+              .on('pointerdown', () => {
+                this.enterButtonPressed = true;
+                this.enterButton.setTexture('enterButtonUp');
+                this.closeDialogue();
+              })
+              .on('pointerup', () => {
+                this.enterButtonPressed = false;
+                this.enterButton.setTexture('enterButtonDw');
+              })
+              .on('pointerout', () => {
+                if (this.enterButtonPressed) {
+                  this.enterButtonPressed = false;
+                  this.enterButton.setTexture('enterButtonDw');
+                } else {
+                  this.enterButton.setTexture('enterButtonDw');
+                }
+              })
+              .on('pointerover', () => {
+                if (!this.enterButtonPressed) {
+                  this.enterButton.setTexture('enterButtonUp');
+                }
+              });
+            this.input.mouse.enabled = true; // Enable mouse input
+            this.isTypewriterComplete = true;
+          }
+        },
+        callbackScope: this,
+        loop: true
+      });
+        
+           // Allow Enter key to dismiss dialogue
+      this.input.keyboard.on('keydown-ENTER', () => {
+        if (this.isTypewriterComplete && this.dialogueGroup && this.keys.ENTER.isDown) {
+          this.closeDialogue();
+        }
+      });
+    }
 
        // Initialize virtual joystick for mobile devices using nippleJS
     if (!this.sys.game.device.os.desktop) {
@@ -433,7 +519,14 @@ export class UgcStoreScene extends Phaser.Scene {
     this.joystickManager = null;
     }
   }
-
+   closeDialogue() {
+    if (this.dialogueGroup) {
+      this.dialogueGroup.destroy(true);
+      this.dialogueGroup = null;
+      this.physics.resume();
+      this.input.keyboard.enabled = true;
+   }
+  }
   toggleSettings() {
     this.isSettingsOpen = !this.isSettingsOpen;
     this.settingsPanel.setVisible(this.isSettingsOpen);
@@ -494,48 +587,48 @@ export class UgcStoreScene extends Phaser.Scene {
     // Handle keyboard animations
     if (this.sys.game.device.os.desktop) {
       if (leftDown) {
-        this.player.anims.play("misa-left-walk", true);
+        this.player.anims.play("king-left-walk", true);
       } else if (rightDown) {
-        this.player.anims.play("misa-right-walk", true);
+        this.player.anims.play("king-right-walk", true);
       } else if (upDown) {
-        this.player.anims.play("misa-back-walk", true);
+        this.player.anims.play("king-back-walk", true);
       } else if (downDown) {
-        this.player.anims.play("misa-front-walk", true);
+        this.player.anims.play("king-front-walk", true);
       } else {
         this.player.anims.stop();
-        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
       }
     } else {
       // Joystick animations (unchanged)
       const vx = this.player.body.velocity.x;
       const vy = this.player.body.velocity.y;
       if (Math.abs(vx) > Math.abs(vy)) {
-        if (vx < 0 && this.player.anims.currentAnim?.key !== "misa-left-walk") {
-          this.player.anims.play("misa-left-walk", true);
-        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "misa-right-walk") {
-          this.player.anims.play("misa-right-walk", true);
+        if (vx < 0 && this.player.anims.currentAnim?.key !== "king-left-walk") {
+          this.player.anims.play("king-left-walk", true);
+        } else if (vx > 0 && this.player.anims.currentAnim?.key !== "king-right-walk") {
+          this.player.anims.play("king-right-walk", true);
         } else if (vx === 0 && vy === 0) {
           this.player.anims.stop();
-          if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+          if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+          else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+          else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+          else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
         }
       } else if (Math.abs(vy) > 0) {
-        if (vy < 0 && this.player.anims.currentAnim?.key !== "misa-back-walk") {
-          this.player.anims.play("misa-back-walk", true);
-        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "misa-front-walk") {
-          this.player.anims.play("misa-front-walk", true);
+        if (vy < 0 && this.player.anims.currentAnim?.key !== "king-back-walk") {
+          this.player.anims.play("king-back-walk", true);
+        } else if (vy > 0 && this.player.anims.currentAnim?.key !== "king-front-walk") {
+          this.player.anims.play("king-front-walk", true);
         }
       } else if (vx === 0 && vy === 0) {
         this.player.anims.stop();
-        if (prevVelocity.x < 0) this.player.setTexture("atlas", "misa-left");
-        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "misa-right");
-        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "misa-back");
-        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "misa-front");
+        if (prevVelocity.x < 0) this.player.setTexture("atlas", "king-left");
+        else if (prevVelocity.x > 0) this.player.setTexture("atlas", "king-right");
+        else if (prevVelocity.y < 0) this.player.setTexture("atlas", "king-back");
+        else if (prevVelocity.y > 0) this.player.setTexture("atlas", "king-front");
       }
     }
 
