@@ -4,41 +4,41 @@ export class OrderScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("Sunflower", "../assets/images/UGCs/Sunflower.png");
-    this.load.image("SAQUARIUM", "../assets/images/UGCs/SAQUARIUM.png");
-    this.load.image("item1", "../assets/item1.png");
-    this.load.image("item2", "../assets/item2.png");
-    this.load.image("item3", "../assets/item3.png");
-    this.load.image("pixelCoin", "../assets/pixelCoin.png");
-    this.load.image("Telecen Table Metal", "../assets/images/UGCs/TelecenTableMetal.png");
-    this.load.image("Telecen Table Metal", "../assets/images/UGCs/TelecenTableWooden");
-    this.load.image("Television with Glass stand", "../assets/images/UGCs/TelevisionwithGlassStand.png"); 
-    this.load.image("Television with Metal stand", "../assets/images/UGCs/TelevisionwithMetalStand.png"); 
-    this.load.image("Television with Wooden stand", "../assets/images/UGCs/TelevisionwithWoodenStand.png"); 
-    this.load.image("Wall Lamp Blue", "../assets/images/UGCs/Wall_Lamp_Blue.png"); 
-    this.load.image("Wall Lamp Single", "../assets/images/UGCs/Wall_Lamp_Single.png"); 
-    this.load.image("wall lamp", "../assets/images/UGCs/wall_lamp.png"); 
-    this.load.image("Welcome Sign", "../assets/images/UGCs/Welcome_Sign.png"); 
-    this.load.image("Bechi Fence", "../assets/images/UGCs/Bechi_Fence.png"); 
-    this.load.image("Bixelnaire Bar", "../assets/images/UGCs/Bixelnaire_Bar.png"); 
-    this.load.image("Borey Balcony", "../assets/images/UGCs/Borey_Balcony.png"); 
-    this.load.image("Borey Door", "../assets/images/UGCs/Borey_Door.png"); 
-    this.load.image("Borey Window", "../assets/images/UGCs/Borey_Window.png"); 
-    this.load.image("Deer Head", "../assets/images/UGCs/Deer_Head.png"); 
-    this.load.image("Little Goose", "../assets/images/UGCs/Little_Goose.png"); 
-    this.load.image("Telecen Couch Black", "../assets/images/UGCs/Telecen_Couch_Black.png"); 
-    this.load.image("Telecen Couch Purple", "../assets/images/UGCs/Telecen_Couch_Purple.png"); 
-    this.load.image("Telecen Dining Glass", "../assets/images/UGCs/Telecen_Dining_Glass.png"); 
-    this.load.image("Telecen Dining Metal", "../assets/images/UGCs/Telecen_Dining_Metal.png"); 
-    this.load.image("Telecen Dining Wooden", "../assets/images/UGCs/Telecen_Dining_Wooden.png"); 
-    this.load.image("Telecen Kitchen Glass L", "../assets/images/UGCs/Telecen_Kitchen_Glass_L.png");
-     this.load.image("Telecen Kitchen Glass R", "../assets/images/UGCs/Telecen_Kitchen_Glass_R.png"); 
-    this.load.image("Telecen Kitchen Metal L", "../assets/images/UGCs/Telecen_Kitchen_Metal_L.png"); 
-    this.load.image("Telecen Kitchen Metal M", "../assets/images/UGCs/Telecen_Kitchen_Metal_M.png"); 
-    this.load.image("Telecen Kitchen Metal R", "../assets/images/UGCs/Telecen_Kitchen_Metal_R.png"); 
-    this.load.image("Telecen Rug Black", "../assets/images/UGCs/Telecen_Rug_Black.png"); 
-    this.load.image("Telecen Rug Blue", "../assets/images/UGCs/Telecen_Rug_Blue.png"); 
-    this.load.image("Telecen Table Glass", "../assets/images/UGCs/TelecenTableGlass.png");
+    this.load.image("Sunflower", "assets/images/UGCs/Sunflower.png");
+    this.load.image("SAQUARIUM", "assets/images/UGCs/SAQUARIUM.png");
+    this.load.image("item1", "assets/item1.png");
+    this.load.image("item2", "assets/item2.png");
+    this.load.image("item3", "assets/item3.png");
+    this.load.image("pixelCoin", "assets/pixelCoin.png");
+    this.load.image("Telecen Table Metal", "assets/images/UGCs/TelecenTableMetal.png");
+    this.load.image("Telecen Table Metal", "assets/images/UGCs/TelecenTableWooden");
+    this.load.image("Television with Glass stand", "assets/images/UGCs/TelevisionwithGlassStand.png"); 
+    this.load.image("Television with Metal stand", "assets/images/UGCs/TelevisionwithMetalStand.png"); 
+    this.load.image("Television with Wooden stand", "assets/images/UGCs/TelevisionwithWoodenStand.png"); 
+    this.load.image("Wall Lamp Blue", "assets/images/UGCs/Wall_Lamp_Blue.png"); 
+    this.load.image("Wall Lamp Single", "assets/images/UGCs/Wall_Lamp_Single.png"); 
+    this.load.image("wall lamp", "assets/images/UGCs/wall_lamp.png"); 
+    this.load.image("Welcome Sign", "assets/images/UGCs/Welcome_Sign.png"); 
+    this.load.image("Bechi Fence", "assets/images/UGCs/Bechi_Fence.png"); 
+    this.load.image("Bixelnaire Bar", "assets/images/UGCs/Bixelnaire_Bar.png"); 
+    this.load.image("Borey Balcony", "assets/images/UGCs/Borey_Balcony.png"); 
+    this.load.image("Borey Door", "assets/images/UGCs/Borey_Door.png"); 
+    this.load.image("Borey Window", "assets/images/UGCs/Borey_Window.png"); 
+    this.load.image("Deer Head", "assets/images/UGCs/Deer_Head.png"); 
+    this.load.image("Little Goose", "assets/images/UGCs/Little_Goose.png"); 
+    this.load.image("Telecen Couch Black", "assets/images/UGCs/Telecen_Couch_Black.png"); 
+    this.load.image("Telecen Couch Purple", "assets/images/UGCs/Telecen_Couch_Purple.png"); 
+    this.load.image("Telecen Dining Glass", "assets/images/UGCs/Telecen_Dining_Glass.png"); 
+    this.load.image("Telecen Dining Metal", "assets/images/UGCs/Telecen_Dining_Metal.png"); 
+    this.load.image("Telecen Dining Wooden", "assets/images/UGCs/Telecen_Dining_Wooden.png"); 
+    this.load.image("Telecen Kitchen Glass L", "assets/images/UGCs/Telecen_Kitchen_Glass_L.png");
+     this.load.image("Telecen Kitchen Glass R", "assets/images/UGCs/Telecen_Kitchen_Glass_R.png"); 
+    this.load.image("Telecen Kitchen Metal L", "assets/images/UGCs/Telecen_Kitchen_Metal_L.png"); 
+    this.load.image("Telecen Kitchen Metal M", "assets/images/UGCs/Telecen_Kitchen_Metal_M.png"); 
+    this.load.image("Telecen Kitchen Metal R", "assets/images/UGCs/Telecen_Kitchen_Metal_R.png"); 
+    this.load.image("Telecen Rug Black", "assets/images/UGCs/Telecen_Rug_Black.png"); 
+    this.load.image("Telecen Rug Blue", "assets/images/UGCs/Telecen_Rug_Blue.png"); 
+    this.load.image("Telecen Table Glass", "assets/images/UGCs/TelecenTableGlass.png");
   }
 
   create(data) {

@@ -27,28 +27,28 @@ export class MainScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("tiles", "../assets/tilesets/blode-32px.png");
-    this.load.image("UgcTiles", "../assets/tilesets/UGCs-32px.png");
-    this.load.tilemapTiledJSON("map", "../assets/tilemaps/blode.json");
+    this.load.image("tiles", "assets/tilesets/blode-32px.png");
+    this.load.image("UgcTiles", "assets/tilesets/UGCs-32px.png");
+    this.load.tilemapTiledJSON("map", "assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
-    this.load.atlas("atlas", "../assets/atlas/katlas.png", "../assets/atlas/katlas.json");
-    this.load.image("profile", "../assets/images/profile.png"); // Load the profile image
-    this.load.image("dialogueImage", "../assets/images/dialogueImage.png");
-    this.load.image("settingButtonDw", "../assets/images/buttons/settingsButton1.png");
-    this.load.image("settingButtonUp", "../assets/images/buttons/settingsButton2.png");
-    this.load.image("xButtonDw", "../assets/images/buttons/xButton1.png");
-    this.load.image("xButtonUp", "../assets/images/buttons/xButton2.png");
-    this.load.image("enterButtonId", "../assets/images/buttons/enterButton1.png");
-    this.load.image("enterButtonDw", "../assets/images/buttons/enterButton2.png");
-    this.load.image("enterButtonUp", "../assets/images/buttons/enterButton3.png");
-    this.load.image("volDwButtonDw", "../assets/images/buttons/volDwButton1.png");
-    this.load.image("volDwButtonUp", "../assets/images/buttons/volDwButton2.png");
-    this.load.image("volUpButtonDw", "../assets/images/buttons/volUpButton1.png");
-    this.load.image("volUpButtonUp", "../assets/images/buttons/volUpButton2.png");
-    this.load.image("minimapBorder", "../assets/images/minimapBorder.png");
-    this.load.image("settingsPanel", "../assets/images/settingsPanel.png");
-    this.load.image("profileImageBorder", "../assets/images/profileImageBorder.png");
+    this.load.atlas("atlas", "assets/atlas/katlas.png", "assets/atlas/katlas.json");
+    this.load.image("profile", "assets/images/profile.png"); // Load the profile image
+    this.load.image("dialogueImage", "assets/images/dialogueImage.png");
+    this.load.image("settingButtonDw", "assets/images/buttons/settingsButton1.png");
+    this.load.image("settingButtonUp", "assets/images/buttons/settingsButton2.png");
+    this.load.image("xButtonDw", "assets/images/buttons/xButton1.png");
+    this.load.image("xButtonUp", "assets/images/buttons/xButton2.png");
+    this.load.image("enterButtonId", "assets/images/buttons/enterButton1.png");
+    this.load.image("enterButtonDw", "assets/images/buttons/enterButton2.png");
+    this.load.image("enterButtonUp", "assets/images/buttons/enterButton3.png");
+    this.load.image("volDwButtonDw", "assets/images/buttons/volDwButton1.png");
+    this.load.image("volDwButtonUp", "assets/images/buttons/volDwButton2.png");
+    this.load.image("volUpButtonDw", "assets/images/buttons/volUpButton1.png");
+    this.load.image("volUpButtonUp", "assets/images/buttons/volUpButton2.png");
+    this.load.image("minimapBorder", "assets/images/minimapBorder.png");
+    this.load.image("settingsPanel", "assets/images/settingsPanel.png");
+    this.load.image("profileImageBorder", "assets/images/profileImageBorder.png");
     this.load.audio("ms_Music", "assets/audio/ms_Music.mp3"); // Removed duplicate load
     this.load.script('nipplejs', 'https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.2/nipplejs.min.js');
   }

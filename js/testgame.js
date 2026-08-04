@@ -12,9 +12,9 @@ class BuildingScene extends Phaser.Scene {
 
   preload() {
     // Reuse assets from MainScene, load building-specific tilemap
-    this.load.image("tiles", "../assets/tilesets/blode-32px.png");
-    this.load.tilemapTiledJSON("buildingMap", "../assets/tilemaps/buildingsc.json");
-    this.load.image("profile", "../assets/images/profile.png"); // Ensure profile image is loaded
+    this.load.image("tiles", "assets/tilesets/blode-32px.png");
+    this.load.tilemapTiledJSON("buildingMap", "assets/tilemaps/buildingsc.json");
+    this.load.image("profile", "assets/images/profile.png"); // Ensure profile image is loaded
   }
 
   create(data) {

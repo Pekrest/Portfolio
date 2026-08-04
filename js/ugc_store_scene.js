@@ -17,9 +17,9 @@ export class UgcStoreScene extends Phaser.Scene {
 
   preload() {
     // Reuse assets from MainScene, load ugc store-specific tilemap
-    this.load.image("UgcTiles", "../assets/tilesets/UGCs-32px.png");
-    this.load.tilemapTiledJSON("ugcStoreMap", "../assets/tilemaps/UgcStore.json"); // Adjust path to your actual tilemap file
-    this.load.audio("uss_Music", "../assets/audio/store_music.mp3");
+    this.load.image("UgcTiles", "assets/tilesets/UGCs-32px.png");
+    this.load.tilemapTiledJSON("ugcStoreMap", "assets/tilemaps/UgcStore.json"); // Adjust path to your actual tilemap file
+    this.load.audio("uss_Music", "assets/audio/store_music.mp3");
     this.load.script('nipplejs', 'https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.2/nipplejs.min.js');
   }
 
