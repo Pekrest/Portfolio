@@ -1,3 +1,6 @@
+import { TiledTileAnimator } from './tiled_tile_animator.js';
+import { PlayerAnimator } from './player_animator.js';
+
 export class UgcStoreScene extends Phaser.Scene {
   constructor() {
     super({ key: 'UgcStoreScene' });
@@ -37,33 +40,10 @@ export class UgcStoreScene extends Phaser.Scene {
     const worldLayer = map.createLayer("World", [tileset, UGCtileset], 0, 0);
     const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset], 0, 0);
 
-   // Initialize animations for all tilesets
-    this.animatedTiles = [];
-    map.tilesets.forEach(tileset => {
-        const tilesetData = tileset.tileData || {};
-        for (let tileId in tilesetData) {
-            if (tilesetData[tileId].animation) {
-                map.layers.forEach(layer => {
-                    if (layer.tilemapLayer) { // Only dynamic layers
-                        layer.data.forEach(row => {
-                            row.forEach(tile => {
-                                if (tile.index === parseInt(tileId) + tileset.firstgid) {
-                                    this.animatedTiles.push({
-                                        tile: tile,
-                                        animation: tilesetData[tileId].animation,
-                                        firstgid: tileset.firstgid,
-                                        elapsedTime: 0,
-                                        currentFrame: 0
-                                    });
-                                }
-                            });
-                        });
-                    }
-                });
-            }
-        }
-    });
-   
+    this.tileAnimator = new TiledTileAnimator(this);
+    this.tileAnimator.collectFromMap(map);
+    this.animatedTiles = this.tileAnimator.animatedTiles;
+
     worldLayer.setCollisionByProperty({ collides: true });
     worldLayer2.setCollisionByProperty({ collides: true });
 
@@ -183,6 +163,8 @@ export class UgcStoreScene extends Phaser.Scene {
       L: Phaser.Input.Keyboard.KeyCodes.L, // Key to decrease health for testing
       ENTER: Phaser.Input.Keyboard.KeyCodes.ENTER // Add Enter key for dialogue
     });
+
+    PlayerAnimator.createWalkingAnimations(this.anims);
 
  // Create life bar (background and fill)
     this.lifeBarBackground = this.add.rectangle(100, 23, 100, 20, 0x000000)
@@ -564,15 +546,9 @@ export class UgcStoreScene extends Phaser.Scene {
    const speed = 175;
     const prevVelocity = this.player.body.velocity.clone();
 
-    this.animatedTiles.forEach(animTile => {
-      animTile.elapsedTime += delta;
-      const frame = animTile.animation[animTile.currentFrame];
-      if (animTile.elapsedTime >= frame.duration) {
-        animTile.elapsedTime = 0;
-        animTile.currentFrame = (animTile.currentFrame + 1) % animTile.animation.length;
-        animTile.tile.index = animTile.animation[animTile.currentFrame].tileid + animTile.firstgid;
-      }
-    });
+    if (this.tileAnimator) {
+      this.tileAnimator.update(delta);
+    }
 
     // Reset velocity only for keyboard (joystick handles touch via events)
     if (this.sys.game.device.os.desktop) {

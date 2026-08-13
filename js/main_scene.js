@@ -1,3 +1,6 @@
+import { TiledTileAnimator } from './tiled_tile_animator.js';
+import { PlayerAnimator } from './player_animator.js';
+
 export class MainScene extends Phaser.Scene {
   constructor() {
     super({ key: 'MainScene' });
@@ -69,33 +72,10 @@ export class MainScene extends Phaser.Scene {
     const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset], 0, 0);
     const aboveLayer2 = map.createLayer("Above Player2", [tileset, UGCtileset], 0, 0);
 
-   // Initialize animations for all tilesets
-    this.animatedTiles = [];
-    map.tilesets.forEach(tileset => {
-        const tilesetData = tileset.tileData || {};
-        for (let tileId in tilesetData) {
-            if (tilesetData[tileId].animation) {
-                map.layers.forEach(layer => {
-                    if (layer.tilemapLayer) { // Only dynamic layers
-                        layer.data.forEach(row => {
-                            row.forEach(tile => {
-                                if (tile.index === parseInt(tileId) + tileset.firstgid) {
-                                    this.animatedTiles.push({
-                                        tile: tile,
-                                        animation: tilesetData[tileId].animation,
-                                        firstgid: tileset.firstgid,
-                                        elapsedTime: 0,
-                                        currentFrame: 0
-                                    });
-                                }
-                            });
-                        });
-                    }
-                });
-            }
-        }
-    });
-   
+    this.tileAnimator = new TiledTileAnimator(this);
+    this.tileAnimator.collectFromMap(map);
+    this.animatedTiles = this.tileAnimator.animatedTiles;
+
     worldLayer.setCollisionByProperty({ collides: true }); 
     worldLayer2.setCollisionByProperty({ collides: true });
     //worldLayer.setCollisionByProperty({ collideSmall: true });
@@ -160,40 +140,7 @@ export class MainScene extends Phaser.Scene {
       }
     });
 
-    // Create animations only if they don't exist
-    const anims = this.anims;
-    if (!anims.exists("king-left-walk")) {
-      anims.create({
-        key: "king-left-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "king-left-walk.", start: 0, end: 3, zeroPad: 3 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-    }
-    if (!anims.exists("king-right-walk")) {
-      anims.create({
-        key: "king-right-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "king-right-walk.", start: 0, end: 3, zeroPad: 3 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-    }
-    if (!anims.exists("king-front-walk")) {
-      anims.create({
-        key: "king-front-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "king-front-walk.", start: 0, end: 3, zeroPad: 3 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-    }
-    if (!anims.exists("king-back-walk")) {
-      anims.create({
-        key: "king-back-walk",
-        frames: anims.generateFrameNames("atlas", { prefix: "king-back-walk.", start: 0, end: 3, zeroPad: 3 }),
-        frameRate: 10,
-        repeat: -1,
-      });
-    }
+    PlayerAnimator.createWalkingAnimations(this.anims);
 
     const camera = this.cameras.main;
     camera.startFollow(this.player, true, 0.1, 0.1);
@@ -639,15 +586,9 @@ export class MainScene extends Phaser.Scene {
     const speed = 175;
     const prevVelocity = this.player.body.velocity.clone();
 
-    this.animatedTiles.forEach(animTile => {
-      animTile.elapsedTime += delta;
-      const frame = animTile.animation[animTile.currentFrame];
-      if (animTile.elapsedTime >= frame.duration) {
-        animTile.elapsedTime = 0;
-        animTile.currentFrame = (animTile.currentFrame + 1) % animTile.animation.length;
-        animTile.tile.index = animTile.animation[animTile.currentFrame].tileid + animTile.firstgid;
-      }
-    });
+    if (this.tileAnimator) {
+      this.tileAnimator.update(delta);
+    }
 
     // Reset velocity only for keyboard (joystick handles touch via events)
     if (this.sys.game.device.os.desktop) {
