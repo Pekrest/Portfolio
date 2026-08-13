@@ -431,28 +431,41 @@ export class MainScene extends Phaser.Scene {
     }
 
         // Initialize virtual joystick for mobile devices using nippleJS
-    if (!this.sys.game.device.os.desktop) {
-      // Wait for nippleJS to be available (loaded in preload)
-      this.joystickManager = nipplejs.create({
-        zone: document.getElementById('game-container') || document.body, // Replace 'game-container' with your Phaser parent's div ID
-        mode: 'dynamic', // Allows joystick to appear where touched
-        position: { left: '100px', bottom: '100px' }, // Default position (adjust as needed)
-        color: 'white' // Basic styling (customize via CSS if desired)
-      });
+        if (!this.sys.game.device.os.desktop) {
+          const createNipple = () => {
+            const nj = (typeof window !== 'undefined' && (window.nipplejs || window.nipple)) || (typeof nipplejs !== 'undefined' && nipplejs);
+            if (!nj) return false;
+            const zoneElem = document.getElementById('game-container') || document.body;
+            this.joystickManager = nj.create({
+              zone: zoneElem,
+              mode: 'dynamic',
+              position: { left: '100px', bottom: '100px' },
+              color: 'white'
+            });
 
-      // Handle joystick movement (set velocity directly)
-      this.joystickManager.on('move', (evt, data) => {
-        const force = Math.min(data.force, 1); // Clamp force for speed control
-        const angle = data.angle.radian;
-        const speed = 175 * force; // Match your movement speed
-        this.player.body.setVelocity(speed * Math.cos(angle), speed * Math.sin(angle) * -1); // Invert Y for Phaser coords
-      });
+            this.joystickManager.on('move', (evt, data) => {
+              if (!data || !data.angle) return;
+              const force = Math.min(data.force || 0, 1);
+              const angle = data.angle.radian || 0;
+              const speed = 175 * force;
+              this.player.body.setVelocity(Math.cos(angle) * speed, -Math.sin(angle) * speed);
+            });
 
-      // Stop movement on release
-      this.joystickManager.on('end', () => {
-        this.player.body.setVelocity(0, 0);
-      });
-    }
+            this.joystickManager.on('end', () => {
+              if (this.player && this.player.body) this.player.body.setVelocity(0, 0);
+            });
+
+            return true;
+          };
+
+          if (!createNipple()) {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.2/nipplejs.min.js';
+            script.async = true;
+            script.onload = () => { createNipple(); };
+            document.head.appendChild(script);
+          }
+        }
 
     // Resume or start background music
     if (!this.bgMusic || !this.bgMusic.isPlaying) {
