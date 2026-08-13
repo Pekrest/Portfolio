@@ -600,8 +600,6 @@ export class OrderScene extends Phaser.Scene {
     // Event delegation for order buttons
     overlay.addEventListener('click', (e) => {
       if (e.target.classList.contains('order-btn')) {
-        const itemName = e.target.previousElementSibling?.textContent || "Unknown Item";
-        console.log('Item purchased:', itemName);
         this.openOrderForm();
       } else if (e.target.classList.contains('order-close-btn')) {
         this.closeOverlay();
