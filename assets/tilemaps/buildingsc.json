@@ -81,6 +81,7 @@
                  "height":0,
                  "id":1,
                  "name":"Home Exit",
+                 "opacity":1,
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -93,6 +94,7 @@
                  "height":0,
                  "id":2,
                  "name":"Home Spawn",
+                 "opacity":1,
                  "point":true,
                  "rotation":0,
                  "type":"",
@@ -111,7 +113,7 @@
  "nextobjectid":8,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.11.2",
+ "tiledversion":"1.12.2",
  "tileheight":32,
  "tilesets":[
         {

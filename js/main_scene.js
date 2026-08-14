@@ -32,6 +32,7 @@ export class MainScene extends Phaser.Scene {
   preload() {
     this.load.image("tiles", "assets/tilesets/blode-32px.png");
     this.load.image("UgcTiles", "assets/tilesets/UGCs-32px.png");
+    this.load.image("animatedAsset", "assets/tilesets/animatedAsset.png");
     this.load.tilemapTiledJSON("map", "assets/tilemaps/blode.json");
     this.load.image("art1", "assets/art1.png");
     this.load.image("art2", "assets/art2.png");
@@ -64,13 +65,14 @@ export class MainScene extends Phaser.Scene {
 
     const tileset = map.addTilesetImage("blode", "tiles");
     const UGCtileset = map.addTilesetImage("UGCs", "UgcTiles");
+    const animatedAsset = this.textures.exists("animatedAsset") ? map.addTilesetImage("animatedAsset", "animatedAsset") : null;
     
-    const belowLayer = map.createLayer("Below Player", [tileset, UGCtileset], 0, 0);
-    const belowLayer2 = map.createLayer("Below Player2", [tileset, UGCtileset], 0, 0);
-    const worldLayer = map.createLayer("World",[tileset, UGCtileset], 0, 0);
-    const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset], 0, 0);
-    const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset], 0, 0);
-    const aboveLayer2 = map.createLayer("Above Player2", [tileset, UGCtileset], 0, 0);
+    const belowLayer = map.createLayer("Below Player", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const belowLayer2 = map.createLayer("Below Player2", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const worldLayer = map.createLayer("World",[tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const aboveLayer2 = map.createLayer("Above Player2", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
 
     this.tileAnimator = new TiledTileAnimator(this);
     this.tileAnimator.collectFromMap(map);

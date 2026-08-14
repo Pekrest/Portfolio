@@ -25,6 +25,7 @@ export class BuildingScene extends Phaser.Scene {
   preload() {
     // Reuse assets from MainScene, load building-specific tilemap
     this.load.image("tiles", "assets/tilesets/blode-32px.png");
+    this.load.image("animatedAsset", "assets/tilesets/animatedAsset.png");
     this.load.tilemapTiledJSON("buildingMap", "assets/tilemaps/buildingsc.json");
     this.load.audio("bs_Music", "assets/audio/house_music.mp3");
     this.load.script('nipplejs', 'https://cdnjs.cloudflare.com/ajax/libs/nipplejs/0.10.2/nipplejs.min.js');
@@ -37,12 +38,13 @@ export class BuildingScene extends Phaser.Scene {
 
     const tileset = map.addTilesetImage("blode", "tiles");
     const UGCtileset = map.addTilesetImage("UGCs", "UgcTiles");
+    const animatedAsset = this.textures.exists("animatedAsset") ? map.addTilesetImage("animatedAsset", "animatedAsset") : null;
     
-    const belowLayer = map.createLayer("Below Player", [tileset, UGCtileset], 0, 0);
-    const belowLayer2 = map.createLayer("Below Player2", [tileset, UGCtileset], 0, 0);
-    const worldLayer = map.createLayer("World", [tileset, UGCtileset], 0, 0);
-    const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset], 0, 0);
-    const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset], 0, 0);
+    const belowLayer = map.createLayer("Below Player", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const belowLayer2 = map.createLayer("Below Player2", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const worldLayer = map.createLayer("World", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const worldLayer2 = map.createLayer("World2", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
+    const aboveLayer = map.createLayer("Above Player", [tileset, UGCtileset, animatedAsset].filter(Boolean), 0, 0);
 
     this.tileAnimator = new TiledTileAnimator(this);
     this.tileAnimator.collectFromMap(map);
